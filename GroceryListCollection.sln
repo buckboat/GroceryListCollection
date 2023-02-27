@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.33130.402
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryListUI", "GroceryListUI\GroceryListUI.csproj", "{7629DA29-3572-4AA6-AE4E-E617D16B62D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryListUI", "GroceryListUI\GroceryListUI.csproj", "{7629DA29-3572-4AA6-AE4E-E617D16B62D2}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ShoppingListDB", "ShoppingListDB\ShoppingListDB.sqlproj", "{BFC1826F-E271-43D6-9D4E-51E2478D0C70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{7629DA29-3572-4AA6-AE4E-E617D16B62D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7629DA29-3572-4AA6-AE4E-E617D16B62D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7629DA29-3572-4AA6-AE4E-E617D16B62D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC1826F-E271-43D6-9D4E-51E2478D0C70}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
