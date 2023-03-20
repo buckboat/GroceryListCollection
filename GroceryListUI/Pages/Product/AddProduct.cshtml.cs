@@ -35,13 +35,19 @@ namespace GroceryListUI.Pages.Product
         public void OnPost()
         {
             // step 1
-            SqlConnection conn = new SqlConnection("Server=(LocalDB)\\MSSQLLocalDB;Database=Grocery;Trusted_Connection=true;");
+            SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString());
             // step 2
             string sql = "INSERT INTO Product(ProductName,ImageURL,NutritionLabel,Description,Price,Ingredients,Quantity)" +
-                "VALUES('" + NewProduct.ProductName +"','"+ NewProduct.ImageURL+"','" + NewProduct.Price + "','" + NewProduct.Description +
-                "','" + NewProduct.Price + "','" + NewProduct.Ingredients + "','" + NewProduct.Quantity + "')";
+                "VALUES(@productName, @imageURL, @nutritionLabel, @description,@price,@ingredients,@quantity)";
             //step 3
             SqlCommand cmd = new SqlCommand(sql,conn);
+            cmd.Parameters.AddWithValue("@productName", NewProduct.ProductName);
+            cmd.Parameters.AddWithValue("@imageURl", NewProduct.ImageURL);
+            cmd.Parameters.AddWithValue("@nutritionLabel", NewProduct.NutritoinLabel);
+            cmd.Parameters.AddWithValue("@description", NewProduct.Description);
+            cmd.Parameters.AddWithValue("@price",NewProduct.Price);
+            cmd.Parameters.AddWithValue("@ingredients",NewProduct.Ingredients);
+            cmd.Parameters.AddWithValue("@quantity",NewProduct.Quantity);
             //step 4
             conn.Open();
             //step 5
