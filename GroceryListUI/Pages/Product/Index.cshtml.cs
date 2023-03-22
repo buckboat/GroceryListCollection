@@ -1,40 +1,46 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using GroceryListUI.Pages.Product;
+using GroceryListUI.Pages.Models;
+using Microsoft.Data.SqlClient;
 
-namespace GroceryListUI.Pages
+namespace GroceryListUI.Pages.Models
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public List<Product> ProductsList { get; set; } = new List<Product>();
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-        public void OnPost()
+
+        public void OnGet()
         {
             // step 1
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
-
                 // step 2
-                string sql = "INSERT INTO Product(ProductName,ImageURL,NutritionLabel,Description,Price,Ingredients,Quantity)" +
-                    "VALUES(@productName, @imageURL, @nutritionLabel, @description,@price,@ingredients,@quantity)";
+                string sql = "SELECT * FROM Product Order by ProductName";
                 //step 3
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@productName", NewProduct.ProductName);
-                cmd.Parameters.AddWithValue("@imageURl", NewProduct.ImageURL);
-                cmd.Parameters.AddWithValue("@nutritionLabel", NewProduct.NutritoinLabel);
-                cmd.Parameters.AddWithValue("@description", NewProduct.Description);
-                cmd.Parameters.AddWithValue("@price", NewProduct.Price);
-                cmd.Parameters.AddWithValue("@ingredients", NewProduct.Ingredients);
-                cmd.Parameters.AddWithValue("@quantity", NewProduct.Quantity);
+                SqlCommand cmd = new SqlCommand(sql, conn);            
                 //step 4
                 conn.Open();
                 //step 5
-                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        Product product = new Product();
+                        product.ProductName = reader["AuthorName"].ToString();
+                        product.ImageURL = reader["ImageURL"].ToString();
+                        product.NutritoinLabel = reader["NutritionLabel"].ToString();
+                        product.Description = reader["Description"].ToString();
+                        product.Price = decimal.Parse(reader["Price"].ToString());
+                        product.Ingredients = reader["Ingredients"].ToString();
+                        product.Quantity = int.Parse(reader["Quantity"].ToString());
+                    }
+                }
                 //step 6
-                conn.Close();
 
             }
 

@@ -1,8 +1,12 @@
-﻿namespace GroceryListUI.Pages.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GroceryListUI.Pages.Models
 {
     public class Product
     {
         public int ProductID { get; set; }
+
+        [Required]
         public string ProductName { get; set; } = string.Empty;
         
         public string ImageURL { get; set; } = string.Empty;

@@ -1,8 +1,41 @@
 ﻿@page
 @model GroceryListUI.Pages.Product.AddProduct
 @{
-    
+
 }
-
-<a class="btn btn-primary" asp-pages="AddProduct"> Add Product</a>
-
+<div class="container"> 
+    <div class = "row">
+        <div class = "col-sm-3">
+            <h2>Producct List</h2>
+        </div>
+    <div class = "col-sm-9">
+    <a class="btn btn-primary" asp-pages="AddProduct"> Add Product</a>
+</div>
+</div>
+    @foreach (var product in Models.Product)
+    { 
+    <!-- Product List-->
+    <div class="row mb-3">
+        <div class ="col-sm-3">
+            <img src = ""/> <!-- image goes here-->
+        </div>
+        <div class = "col-sm-9">
+        <div class = "row">
+        <div class = "col-sm-12">
+           @product.ImageURL
+            </div>
+                    </div>
+        <div class = "row">
+        <div class = "col-sm-12">
+            @product.Description
+            </div>
+                    </div>
+        <div class = "row">
+        <div class = "col-sm-12">
+           @product.price
+            </div>
+          </div>
+        </div>
+    </div>
+}
+</div>
