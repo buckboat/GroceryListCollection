@@ -1,5 +1,5 @@
 ﻿@page
-@model GroceryListUI.Pages.Product.AddProduct
+@model GroceryListUI.Pages.Models.IndexModel
 @{
 
 }
@@ -12,7 +12,7 @@
     <a class="btn btn-primary" asp-pages="AddProduct"> Add Product</a>
 </div>
 </div>
-    @foreach (var product in Models.Product)
+    @foreach (var product in Model.ProductsList)
     { 
     <!-- Product List-->
     <div class="row mb-3">
@@ -32,10 +32,10 @@
                     </div>
         <div class = "row">
         <div class = "col-sm-12">
-           @product.price
+           @product.Price
             </div>
           </div>
         </div>
     </div>
-}
+}   
 </div>

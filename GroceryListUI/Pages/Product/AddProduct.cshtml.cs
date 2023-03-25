@@ -8,7 +8,6 @@ namespace GroceryListUI.Pages.Product
     public class AddProduct : PageModel
     {
         [BindProperty]
-
         public GroceryListUI.Pages.Models.Product NewProduct { get; set; } = new GroceryListUI.Pages.Models.Product();
         public void OnGet()
         {
@@ -20,7 +19,7 @@ namespace GroceryListUI.Pages.Product
              * 5. Execute the SQL command
              * 6. Close the SQL connection
              */
-
+            /*
             NewProduct.ProductName = "Name";
             NewProduct.ImageURL = "URL";
             NewProduct.NutritoinLabel = "Nutrition";
@@ -28,7 +27,7 @@ namespace GroceryListUI.Pages.Product
             NewProduct.Price = 1.00m;
             NewProduct.Ingredients = "Stuff";
             NewProduct.Quantity = 0;
-
+            */
 
         }
 
@@ -58,9 +57,6 @@ namespace GroceryListUI.Pages.Product
                     conn.Open();
                     //step 5
                     cmd.ExecuteNonQuery();
-                    //step 6
-                    
-                    
                 }
                 return RedirectToAction("Index");
             }

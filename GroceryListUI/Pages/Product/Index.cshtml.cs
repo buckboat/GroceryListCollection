@@ -38,10 +38,9 @@ namespace GroceryListUI.Pages.Models
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredients = reader["Ingredients"].ToString();
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        ProductsList.Add(product);
                     }
                 }
-                //step 6
-
             }
 
         }
