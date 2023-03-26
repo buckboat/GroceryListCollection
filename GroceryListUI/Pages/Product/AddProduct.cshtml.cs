@@ -19,15 +19,15 @@ namespace GroceryListUI.Pages.Product
              * 5. Execute the SQL command
              * 6. Close the SQL connection
              */
-            /*
+            
             NewProduct.ProductName = "Name";
             NewProduct.ImageURL = "URL";
-            NewProduct.NutrtionLabel = "Nutritoin";
+            NewProduct.NutrtionLabel = "NutritionURL";
             NewProduct.Description = "Description";
             NewProduct.Price = 1.00m;
-            NewProduct.Ingredient = "Stuff";
-            NewProduct.Quantity = 0;
-            */
+            NewProduct.Ingredient = "Ingredient(s)";
+            NewProduct.Quantity = 1;
+            
 
         }
 
