@@ -10,7 +10,7 @@
             <h2>Product List</h2>
         </div>
     <div class = "col-sm-9">
-    <a class="btn btn-primary" asp-page="Product/AddProduct"> Add Product</a>
+    <a class="btn btn-primary" asp-page="AddProduct"> Add Product</a>
 </div>
 </div>
     @foreach (var product in Model.ProductsList)
@@ -18,12 +18,13 @@
     <!-- Product List-->
     <div class="row mb-3">
         <div class ="col-sm-3">
-            <img src = ""/> <!-- image goes here-->
+                <img src="@product.ImageURL" /> <!-- image goes here-->
         </div>
+
         <div class = "col-sm-9">
         <div class = "row">
         <div class = "col-sm-12">
-           @product.ImageURL
+           <img src = "@product.NutrtionLabel" />
             </div>
                     </div>
         <div class = "row">
