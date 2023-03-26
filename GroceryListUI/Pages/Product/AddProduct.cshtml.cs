@@ -22,7 +22,7 @@ namespace GroceryListUI.Pages.Product
             /*
             NewProduct.ProductName = "Name";
             NewProduct.ImageURL = "URL";
-            NewProduct.NutritoinLabel = "Nutrition";
+            NewProduct.NutrtionLabel = "Nutritoin";
             NewProduct.Description = "Description";
             NewProduct.Price = 1.00m;
             NewProduct.Ingredient = "Stuff";
@@ -42,13 +42,13 @@ namespace GroceryListUI.Pages.Product
                 {
                
                     // step 2
-                    string sql = "INSERT INTO Product(ProductName,ImageURL,NutritionLabel,Description,Price,Ingredient,Quantity)" +
-                        "VALUES(@productName, @imageURL, @nutritionLabel, @description,@price,@ingredient,@quantity)";
+                    string sql = "INSERT INTO Product(ProductName,ImageURL,NutrtionLabel,Description,Price,Ingredient,Quantity)" +
+                        "VALUES(@productName, @imageURL, @nutrtionLabel, @description,@price,@ingredient,@quantity)";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@productName", NewProduct.ProductName);
                     cmd.Parameters.AddWithValue("@imageURl", NewProduct.ImageURL);
-                    cmd.Parameters.AddWithValue("@nutritionLabel", NewProduct.NutritoinLabel);
+                    cmd.Parameters.AddWithValue("@nutrtionLabel", NewProduct.NutrtionLabel);
                     cmd.Parameters.AddWithValue("@description", NewProduct.Description);
                     cmd.Parameters.AddWithValue("@price", NewProduct.Price);
                     cmd.Parameters.AddWithValue("@ingredient", NewProduct.Ingredient);

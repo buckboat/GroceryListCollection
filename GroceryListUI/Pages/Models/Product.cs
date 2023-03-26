@@ -11,7 +11,7 @@ namespace GroceryListUI.Pages.Models
         
         public string ImageURL { get; set; } = string.Empty;
 
-        public string NutritoinLabel { get; set; } = string.Empty;
+        public string NutrtionLabel { get; set; } = string.Empty;
 
         public string Description { get; set; } = string.Empty;
 

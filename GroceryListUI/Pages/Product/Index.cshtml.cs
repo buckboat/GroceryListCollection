@@ -31,9 +31,9 @@ namespace GroceryListUI.Pages.Models
                     {
 
                         Product product = new Product();
-                        product.ProductName = reader["AuthorName"].ToString();
+                        product.ProductName = reader["ProductName"].ToString();
                         product.ImageURL = reader["ImageURL"].ToString();
-                        product.NutritoinLabel = reader["NutritionLabel"].ToString();
+                        product.NutrtionLabel = reader["NutrtionLabel"].ToString();
                         product.Description = reader["Description"].ToString();
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredient = reader["Ingredient"].ToString();
