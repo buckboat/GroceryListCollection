@@ -17,7 +17,7 @@ namespace GroceryListUI.Pages.Models
 
         public decimal Price { get; set; }
 
-        public string Ingredients { get; set; } = string.Empty;
+        public string Ingredient { get; set; } = string.Empty;
 
         public int Quantity { get; set; }
 
