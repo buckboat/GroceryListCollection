@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  font-weight:100;
 }
 
 @media (min-width: 768px) {
@@ -14,16 +15,19 @@ html {
 }
 
 body {
+  
     margin-top: 6px;
     margin-bottom: 60px;
+    background-color:mintcream;
 }
 
 #AddProductBtn{
     height:125px;
 }
 
-.AddProductBg{
-    background-color:green;
-    opacity: .8;
-    height: 135px;
+.AddProductBg {
+    background-color: #4CBB17;
+    opacity: .99;
+    padding: 15px;
+    border-radius:5px;
 }
