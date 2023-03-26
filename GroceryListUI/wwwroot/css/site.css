@@ -14,5 +14,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-top: 6px;
+    margin-bottom: 60px;
+}
+
+#AddProductBtn{
+    height:125px;
+}
+
+.AddProductBg{
+    background-color:green;
+    opacity: .8;
+    height: 135px;
 }
