@@ -8,7 +8,7 @@
         public static string GetConnectionString()
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetttings.json", optional: false, reloadOnChange: true); 
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true); 
             config = builder.Build();
             return config.GetConnectionString("GroceryConnectionString");
         }
