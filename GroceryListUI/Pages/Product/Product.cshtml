@@ -4,41 +4,55 @@
 @{
 
 }
-<div class="container"> 
-    <div class = "row">
-        <div class = "col-sm-3">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
             <h2>Product List</h2>
         </div>
-    <div class = "col-sm-9">
-    <a class="btn btn-primary" asp-page="AddProduct"> Add Product</a>
-</div>
-</div>
-    @foreach (var product in Model.ProductsList)
-    { 
-    <!-- Product List-->
-    <div class="row mb-3">
-        <div class ="col-sm-3">
-                <img src="@product.ImageURL" /> <!-- image goes here-->
-        </div>
-
-        <div class = "col-sm-9">
-        <div class = "row">
-        <div class = "col-sm-12">
-           <img src = "@product.NutrtionLabel" />
-            </div>
-                    </div>
-        <div class = "row">
-        <div class = "col-sm-12">
-            @product.Description
-            </div>
-                    </div>
-        <div class = "row">
-        <div class = "col-sm-12">
-           @product.Price
-            </div>
-          </div>
+        <div class="col-sm-9">
+            <a class="btn btn-primary" asp-page="AddProduct"> Add Product</a>
         </div>
     </div>
- 
-}
+    @foreach (var product in Model.ProductsList)
+    {
+        <!-- Product List-->
+        <div class="row mb-5">
+            <hr size="10">
+            <div class="col-sm-3">
+                <img src="@product.ImageURL" width="200" height="300"/> <!-- image goes here-->
+            </div>
+
+            <div class="col-sm-3">
+                <img src="@product.NutrtionLabel" width="150" height="300" /> <!-- image goes here-->
+            </div>
+            <!--Product Information-->
+            <div class="col-sm-6">
+                <div class="row">
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <b>@product.ProductName</b>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <small>@product.Description</small>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <b>Qt:<i>@product.Quantity</i></b>
+                </div>
+                <div class="col-md-4 offset-md-4">
+                    <b>$:<i>@product.Price</i></b>
+                </div>
+            </div>
+
+        </div>
+    }
 </div>
