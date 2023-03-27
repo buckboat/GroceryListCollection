@@ -18,7 +18,7 @@ namespace GroceryListUI.Pages.Product
              * 4. Open the SQL connection
              * 5. Execute the SQL command
              * 6. Close the SQL connection
-             */
+             
             
             NewProduct.ProductName = "Name";
             NewProduct.ImageURL = "URL";
@@ -27,7 +27,7 @@ namespace GroceryListUI.Pages.Product
             NewProduct.Price = 0m;
             NewProduct.Ingredient = "Ingredient(s)";
             NewProduct.Quantity = 1;
-            
+            */
 
         }
 
