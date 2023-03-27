@@ -24,7 +24,7 @@ namespace GroceryListUI.Pages.Product
             NewProduct.ImageURL = "URL";
             NewProduct.NutrtionLabel = "NutritionURL";
             NewProduct.Description = "Description";
-            NewProduct.Price = 1.00m;
+            NewProduct.Price = 0m;
             NewProduct.Ingredient = "Ingredient(s)";
             NewProduct.Quantity = 1;
             
