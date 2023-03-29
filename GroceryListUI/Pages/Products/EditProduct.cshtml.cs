@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GroceryListUI.Pages.Product
+namespace GroceryListUI.Pages.Products
 {
     public class EditProductModel : PageModel
     {

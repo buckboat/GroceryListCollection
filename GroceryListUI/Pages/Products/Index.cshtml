@@ -1,5 +1,5 @@
 ﻿@page
-@model GroceryListUI.Pages.Models.IndexModel;
+@model GroceryListUI.Pages.Products.IndexModel;
 
 @{
 
@@ -10,23 +10,23 @@
             <h2>Product List</h2>
         </div>
         <div class="col-sm-9">
-            <a class= "AddProductBg bg-success  btn " asp-page="AddProduct"> Add Product</a>
+            <a class="AddProductBg bg-success  btn " asp-page="AddProduct"> Add Product</a>
         </div>
     </div>
-    @foreach (var product in Model.ProductsList)
+    @foreach(var product in Model.ProductsList)
     {
         <!-- Product List-->
         <div class="row mb-5">
             <hr size="10">
             <div class=" col-sm-3">
-                <img src="@product.ImageURL" width="200" height="300"/> <!-- image goes here-->
-            </div>
+                <img src="@product.ImageURL" width="200" height="300" /> <!-- image goes here-->
+        </div>
 
             <div class="  col-sm-3">
                 <img src="@product.NutrtionLabel" width="150" height="300" /> <!-- image goes here-->
-            </div>
+        </div>
             <!--Product Information-->
-            <div class="col-sm-6">
+        <div class="col-sm-6">
                 <div class="row">
                 </div>
 
@@ -47,7 +47,7 @@
                         Ingredients: @product.Ingredient
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="row">
@@ -59,15 +59,33 @@
                 </div>
             </div>
 
-            <div class ="col-sm-12">
-                <a asp-page = "EditProduct" asp-route-id="@object.ProductID"" class="btn btn.primary">
-                    <i class="bi bi-pencil-square " ></i>Edit Product
-                </a> 
+                        <div class="col-sm-12">
+                <a asp-page="EditProduct" asp-route-id="@product.ProductID" class="btn btn.primary">
+                    <i class="bi bi-pencil-square mx-2 "></i>Edit Product
+                </a>
 
-                  <a asp-page = "DeleteProduct" class="btn btn.danger">
-                    <i class="bi bi-trash3 " ></i>Delete Product
-                </a> 
+                <a asp-page="DeleteProduct" class="btn btn.danger">
+                    <i class="bi bi-trash3 "></i>Delete Product
+                </a>
+
+            </div>
+
 
         </div>
+
     }
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

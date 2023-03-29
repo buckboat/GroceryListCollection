@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using GroceryListUI.Pages.Product;
+using GroceryListUI.Pages.Products;
 using GroceryListUI.Pages.Models;
 using Microsoft.Data.SqlClient;
 
-namespace GroceryListUI.Pages.Models
+namespace GroceryListUI.Pages.Products
 {
     public class IndexModel : PageModel
     {

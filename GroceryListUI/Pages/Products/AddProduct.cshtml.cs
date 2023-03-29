@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
 
-namespace GroceryListUI.Pages.Product
+namespace GroceryListUI.Pages.Products
 {
     public class AddProduct : PageModel
     {
