@@ -1,7 +1,27 @@
 ﻿@page
 @model GroceryListUI.Pages.Product.AddProduct
 @{
+    ViewData["Title"] = "Add Author";
 }
+
+<script type="text/javascript">
+    function validateInput(){
+        var isValid = true;
+
+        var = productName = document.getElementById("inputAuthorName");
+        if(productName.value == ""){
+            isValid = false;
+            document.getElementById("productNameError").innerHTML = "This field is requred."'';
+        }
+
+
+
+        return isValid;
+
+    }    
+
+
+</script>
 
 <form method="post">
 
@@ -76,7 +96,7 @@
 
     
         <div class="AddProductBg col-sm-2 row align-items-center ">
-        <button type="submit" id="AddProductBtn" class="btn btn-success">Add Product</button>
+        <button type="submit" id="AddProductBtn" onclick ="return validateInput()" class="btn btn-success">Add Product</button>
     </div>
 </div>
 

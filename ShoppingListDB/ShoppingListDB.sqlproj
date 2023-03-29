@@ -70,4 +70,7 @@
     <Build Include="dbo\Tables\List.sql" />
     <Build Include="dbo\Tables\LIstProduct.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\sync-data.sql" />
+  </ItemGroup>
 </Project>
