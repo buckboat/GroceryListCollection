@@ -1,81 +1,72 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.IndexModel;
-
 @{
-
 }
+
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
             <h2>Product List</h2>
         </div>
         <div class="col-sm-9">
-            <a class="AddProductBg bg-success  btn " asp-page="AddProduct"> Add Product</a>
+            <a class="btn btn-success" asp-page="AddProduct"><i class="bi bi-plus-lg mx-2"></i> Add Product</a>
         </div>
     </div>
-    @foreach(var product in Model.ProductsList)
+
+    @foreach (var product in Model.ProductsList)
     {
         <!-- Product List-->
         <div class="row mb-5">
             <hr size="10">
-            <div class=" col-sm-3">
-                <img src="@product.ImageURL" width="200" height="300" /> <!-- image goes here-->
-        </div>
+            <div class="col-sm-3">
+                <img src="@product.ImageURL" width="150" height="300" /> <!-- image goes here-->
+            </div>
 
-            <div class="  col-sm-3">
+            <div class="col-sm-3">
                 <img src="@product.NutrtionLabel" width="150" height="300" /> <!-- image goes here-->
-        </div>
+            </div>
             <!--Product Information-->
-        <div class="col-sm-6">
+            <div class="col-sm-6">
                 <div class="row">
                 </div>
 
                 <div class="row">
-                    <div class="AddProductBg mt-4 mb-4 col-sm-12">
+                    <div class="AddProductBg mt-4 mb-4 col-sm-6">
                         <b>@product.ProductName</b>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class=" AddProductBg mt-4 mb-4 col-sm-12">
+                    <div class=" AddProductBg mt-4 mb-4 col-sm-6">
                         <small>Description: @product.Description</small>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="AddProductBg mt-4 mb-4 col-sm-12">
+                    <div class="AddProductBg mt-4 mb-4 col-sm-6">
                         Ingredients: @product.Ingredient
                     </div>
                 </div>
-
             </div>
 
             <div class="row">
-                <div class="AddProductBg mt-4 mb-4 col-md-4">
-                    <b>Qt:<i>@product.Quantity</i></b>
-                </div>
-                <div class="AddProductBg mt-4 mb-4 col-md-4 offset-md-4">
+                <div class="AddProductBg mt-4 mb-4 col-sm-1">
                     <b>$:<i>@product.Price</i></b>
                 </div>
             </div>
 
-                        <div class="col-sm-12">
-                <a asp-page="EditProduct" asp-route-id="@product.ProductID" class="btn btn.primary">
-                    <i class="bi bi-pencil-square mx-2 "></i>Edit Producta
+            <div class="col-sm-12">
+                <a asp-page="EditProduct" asp-route-id="@product.ProductID" class="btn btn-success">
+                    <i class="bi bi-pencil-square mx-2"></i>Edit Product
                 </a>
 
-                <a asp-page="DeleteProduct" class="btn btn.danger">
-                    <i class="bi bi-trash3 "></i>Delete Product
+                <a asp-page="DeleteProduct" class="btn btn-danger">
+                    <i class="bi bi-trash3 mx-2"></i>Delete Product
                 </a>
-
             </div>
-
-
         </div>
-
     }
-
-
+</div>
 
 
 
