@@ -11,9 +11,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-success border-bottom box-shadow mb-5">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">GroceryListUI</a>
+                <img src="https://m.media-amazon.com/images/I/51ci9LqaybL._AC_SL1000_.jpg" style="width:100%;max-width:50px" />
+                <a class="navbar-brand text-light mx-2" asp-area="" asp-page="/Index">Grocery List</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,13 +22,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        <!--
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Products/AddProduct">Add Product</a>
-                        </li>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Products/AddProduct">Add Product</a>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Product</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Products/Index">Product</a>
                         </li>
                         <!--
                         <li class="nav-item">
@@ -44,8 +46,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer bg-success text-muted">
+        <div class="container text-light bg-success">
             &copy; 2023 - GroceryListUI - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
