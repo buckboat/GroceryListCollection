@@ -10,8 +10,9 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+
 }
 
 body {
@@ -29,5 +30,31 @@ body {
     background-color: #4CBB17;
     opacity: .99;
     padding: 15px;
-    border-radius:5px;
+    border-radius: 5px;
+}
+
+.ProductBg{
+    background-color: turquoise;
+    opacity: .99;
+    border-radius: 5px;
+}
+
+#SearchName {
+    background-color:lightgreen;
+}
+
+
+
+#TitleButton {
+    background-color: lightcoral;
+    opacity: .99;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#SearchList {
+    background-color: lightblue;
+    opacity: .99;
+    padding: 15px;
+    border-radius: 5px;
 }
