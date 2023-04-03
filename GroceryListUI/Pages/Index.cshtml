@@ -31,10 +31,10 @@
         </div>
     </div>
 
-    <div class="row mb-4 h-200">
+    <div class="row">
         <!--Image-->
-        <div class="AddProductBg col-sm-5">
-            <label for="SearchList" class="col-sm-3 col-form-label"></label>
+        <div class=" AddProductBg col-5" style="background-color:#4CBB17;">
+            <label for="SearchList" class="" style=" background-color:forestgreen; text-align:center; font-size:45px; font-weight:550">Search for your product!</label>
             <input type="text" class="form-control" id="inputProductSearch" value="Search" />
             <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
                 @foreach (var product in Model.ProductsList)
@@ -80,16 +80,15 @@
         <div class="col-sm-1 ">
         </div>
 
-        <!--Label-->
-        <div id="SearchList" class="col-sm-6" style="align-content:center" >
-            <label for="ListTitle" class="col-form-label" style="text-align:center; font-size:45px; font-weight:550">Shopping List</label>
-            <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
+        <!--Search List-->
+        <div id="SearchList" class="col-sm-6">
+            <label for="ListTitle" class=""</label>
+            <div style="background-color:dodgerblue; text-align:center; font-size:45px; font-weight:bold; ">
+                Shopping List
+                <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
                 @foreach (var product in Model.ProductsList)
                 {
-                    <!-- Product List-->
-
-
-
+                    <!-- Search Name-->
                     <div class="row mb-5 align-content-center  " style="background-color:darkcyan" >
                         <hr size="10">
 
@@ -99,7 +98,7 @@
                             </div>
                         </div>
 
-
+                        <!-- Search Image-->
                         <div class="row">
                             <div class="col-sm-6">
                                 <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
@@ -111,7 +110,7 @@
                             </div>
                         </div>
 
-
+                        <!-- Search Price-->
                         <div class="row">
                             <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
                                 <b>$<i>@product.Price</i></b>
@@ -125,6 +124,7 @@
                         </div>
                     </div>
                 }
+                </div>
             </div>
         </div>
     </div>
