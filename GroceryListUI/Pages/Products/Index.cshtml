@@ -60,9 +60,12 @@
                     <i class="bi bi-pencil-square mx-2"></i>Edit Product
                 </a>
 
-                <a asp-page="DeleteProduct" class="btn btn-danger">
+               <!-- <a asp-page="DeleteProduct" asp-route-id="@product.ProductID" class="btn btn-danger">
                     <i class="bi bi-trash3 mx-2"></i>Delete Product
                 </a>
+               -->
+
+                <button type="submit" asp-page="DeleteProduct" class="btn-primary btn-danger" onclick="return confirm('Are you sure you want to Delete this product?')">Delete</button>
             </div>
         </div>
     }

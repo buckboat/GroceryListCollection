@@ -53,6 +53,7 @@ namespace GroceryListUI.Pages.Products
                     cmd.Parameters.AddWithValue("@price", NewProduct.Price);
                     cmd.Parameters.AddWithValue("@ingredient", NewProduct.Ingredient);
                     cmd.Parameters.AddWithValue("@quantity", NewProduct.Quantity);
+                    
                     //step 4
                     conn.Open();
                     //step 5
