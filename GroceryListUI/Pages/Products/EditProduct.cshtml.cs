@@ -23,7 +23,7 @@ namespace GroceryListUI.Pages.Products
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@productID", Id);
  
-                    
+                    //
 
                     //step 4
                     conn.Open();
