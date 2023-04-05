@@ -22,12 +22,25 @@ namespace GroceryListUI.Pages.Products
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@productID", Id);
-
+ 
+                    
 
                     //step 4
                     conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        ExistingProduct.ProductName = reader["ProductName"].ToString();
+                        ExistingProduct.ImageURL = reader["ImageURL"].ToString();
+                        //ExistingProduct.Price = reader["Price"];
+                        ExistingProduct.NutrtionLabel = reader["NutrtionLabel"].ToString();
+                        ExistingProduct.ProductName = reader["ProductName"].ToString();
+                        ExistingProduct.Description = reader["Descriptoin"].ToString();
+                        ExistingProduct.Ingredient = reader["Ingredient"].ToString();
+                    }
                     //step 5
-                    cmd.ExecuteReader();
+ 
                 }
 
             }

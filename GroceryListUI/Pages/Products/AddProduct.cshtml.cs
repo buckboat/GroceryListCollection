@@ -31,6 +31,24 @@ namespace GroceryListUI.Pages.Products
 
         }
 
+        private void PopulateProductList()
+        {
+            using(SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            {
+                string sql = "SELECT ProductID, ProductName FROM Product Order by ProductName";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                   // SelectListItem item = new SelectListItem();
+
+
+
+
+                }
+            }
+        }
 
 
         public IActionResult OnPost()

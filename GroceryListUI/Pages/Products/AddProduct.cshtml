@@ -107,5 +107,41 @@
         </div>
     </div>
 
+    <div class ="row mb-3">
+        <h2 class ="col-sm-2">
+            Add Product
+        </h2>
+
+    </div>
+    <div class = "row mb-3">
+        <div class="col-sm-2">
+        <label for="inputProductName" class = "form-label" asp-for="NewProduct.ProductName"></label>
+        </div>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputProductName" asp-for="NewProduct.ProductName" />
+        </div>
+    </div>
+
+        <div class = "row mb-3">
+        <div class="col-sm-2">
+        <label for="inputPrice" class = "form-label" asp-for="NewProduct.Price"></label>
+        </div>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPrice" asp-for="NewProduct.Price" />
+        </div>
+    </div>
+        </div>
+
+        <div class = "row mb-3">
+        <div class="col-sm-2">
+        <label for="inputImageURL" class = "form-label" asp-for="NewProduct.ImageURL"></label>
+        </div>
+        <div class="col-sm-10">
+           <!-- <select id="ddlProductName" asp-for="NewProduct.ProductID " asp-items=""></select> />-->
+        </div>
+    </div>
+        
+
+
 
 </form>
