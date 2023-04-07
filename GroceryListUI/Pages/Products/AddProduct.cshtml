@@ -43,6 +43,7 @@
         <div class="AddProductBg col-sm-5">
             <label for="inputProductName" class=" col-sm-3 col-form-label"> Product Name:</label>
             <input type="text" class="form-control" id="inputProductName" asp-for="NewProduct.ProductName" />
+            <span asp-validation-for=" NewProduct.ProductName "></span>
         </div>
 
         <!--Price-->
@@ -107,12 +108,17 @@
         </div>
     </div>
 
+
+
+    <!--
+
     <div class ="row mb-3">
         <h2 class ="col-sm-2">
             Add Product
         </h2>
 
     </div>
+
     <div class = "row mb-3">
         <div class="col-sm-2">
         <label for="inputProductName" class = "form-label" asp-for="NewProduct.ProductName"></label>
@@ -137,10 +143,10 @@
         <label for="inputImageURL" class = "form-label" asp-for="NewProduct.ImageURL"></label>
         </div>
         <div class="col-sm-10">
-           <!-- <select id="ddlProductName" asp-for="NewProduct.ProductID " asp-items=""></select> />-->
+            <select id="ddlProductName" asp-for="NewProduct.ProductID " asp-items=""></select> />
         </div>
     </div>
-        
+    -->
 
 
 

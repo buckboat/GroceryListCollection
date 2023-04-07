@@ -31,6 +31,7 @@ namespace GroceryListUI.Pages.Products
                     {
 
                         Product product = new Product();
+                        product.ProductID = int.Parse(reader["ProductID"].ToString());
                         product.ProductName = reader["ProductName"].ToString();
                         product.ImageURL = reader["ImageURL"].ToString();
                         product.NutrtionLabel = reader["NutrtionLabel"].ToString();

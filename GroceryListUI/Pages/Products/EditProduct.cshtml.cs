@@ -33,10 +33,10 @@ namespace GroceryListUI.Pages.Products
                         reader.Read();
                         ExistingProduct.ProductName = reader["ProductName"].ToString();
                         ExistingProduct.ImageURL = reader["ImageURL"].ToString();
-                        //ExistingProduct.Price = reader["Price"];
+                        ExistingProduct.Price = decimal.Parse(reader["Price"].ToString());
                         ExistingProduct.NutrtionLabel = reader["NutrtionLabel"].ToString();
                         ExistingProduct.ProductName = reader["ProductName"].ToString();
-                        ExistingProduct.Description = reader["Descriptoin"].ToString();
+                        ExistingProduct.Description = reader["Description"].ToString();
                         ExistingProduct.Ingredient = reader["Ingredient"].ToString();
                     }
                     //step 5
@@ -58,7 +58,11 @@ namespace GroceryListUI.Pages.Products
                 {
 
                     // step 2
-                    string sql = "UPDATE Product SET ProductName=@productName,ImageURL=@imageURL,NutrtionLabel=@nutrtionlabel,Description=@description,Price=@price,Ingredient=@ingredient,Quantity=@quantity WHERE ProductID=@productID";
+                    string sql = "UPDATE Product SET ProductName=@productName,ImageURL=@imageURL,NutrtionLabel=@nutrtionlabel," +
+                        "Description=@description,Price=@price,Ingredient=@ingredient,Quantity=@quantity WHERE ProductID=@productID";
+
+
+
 
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
@@ -75,7 +79,7 @@ namespace GroceryListUI.Pages.Products
                     //step 5
                     cmd.ExecuteNonQuery();
                 }
-                return RedirectToAction("Index");
+                return RedirectToPage("Index");
             }
             else
             {
