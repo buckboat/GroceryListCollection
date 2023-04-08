@@ -7,13 +7,12 @@ namespace GroceryListUI.Pages.Products
 {
     public class EditProductModel : PageModel
     {
+        [BindProperty]
         public Product ExistingProduct { get; set; } = new Product();
 
         public void OnGet(int Id)
         {
-            if (ModelState.IsValid)
-            {
-                // step 1
+                            // step 1
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
 
@@ -43,7 +42,7 @@ namespace GroceryListUI.Pages.Products
  
                 }
 
-            }
+            
 
 
         }
