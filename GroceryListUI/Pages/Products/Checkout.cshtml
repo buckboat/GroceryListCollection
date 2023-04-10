@@ -1,5 +1,61 @@
 ﻿@page
-@model GroceryListUI.Pages.Products.CheckoutModel
+@model GroceryListUI.Pages.Products.IndexModel
 @{
 }
-checkout test
+<div id="SearchList" class="col-sm-12 align-content-center">
+    <label for="ListTitle" class=""></label>
+    <div style="background-color:dodgerblue; text-align:center; font-size:45px; font-weight:bold; ">
+        Shopping List
+        <div style="height:overflow-y:auto; overflow-x:hidden">
+            @foreach (var product in Model.ProductsList)
+            {
+                <!-- Search Name-->
+                <div class="row mb-5 align-content-center  " style="background-color:darkcyan">
+                    <hr size="10">
+
+                    <div class="row">
+                        <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
+                            <b>@product.ProductName </b>
+                        </div>
+                    </div>
+
+                    <!-- Search Image-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                            <img src="@product.NutrtionLabel" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                        </div>
+                        <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
+                            <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
+
+
+                        </div>
+                    </div>
+
+                    <!-- Search Price-->
+                    <div class="row">
+                        <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
+                            <b>$<i>@product.Price</i></b>
+                        </div>
+                        <div class="col-6">
+                            <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                <i class="bi bi-pencil-square mx-2"></i>Remove Item
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>&nbsp;</p>
+</div>
+
+    <div class="col-sm-12 offset-md-10">
+        <a asp-page="TotalPage" class="btn btn-success">
+            <i class="bi bi-calculator mx-2"></i>Calculate Total
+        </a>
+    </div>
