@@ -4,6 +4,9 @@ namespace GroceryListUI.Pages.Models
 {
     public class Product
     {
+
+        public string SearchBox { get; set; } = string.Empty;
+
         public int ProductID { get; set; }
         [Required(ErrorMessage ="This field is required!")]
         public string ProductName { get; set; } = string.Empty;

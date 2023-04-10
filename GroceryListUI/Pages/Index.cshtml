@@ -48,20 +48,23 @@
         <!--Image-->
         <div class=" AddProductBg col-5" style="background-color:#4CBB17;">
      
-            <form method="post">
+            
+                
                 <label for="SearchList" class="" style=" background-color:forestgreen; text-align:center; font-size:45px; font-weight:550">Search for your product!</label>
                 <input name="search" type="text" class="form-control" id="inputProductSearch" value="Search" />
+                <
+
                 <!--
-                <a asp-page="SearchProduct" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                    <i class="bi bi-binoculars-fill mx-2"></i>Search
+                <a asp-page="SearchProduct"  asp-for="product.SearchBox" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                    <i class="bi bi-binoculars-fill mx-2"></i>Search 
                 </a>
                 -->
-            <!--
+            
                 <div class="AddProductBg col-sm-2 row align-items-center ">
-                    <button name="search" type="submit" id="SearchBtn" onclick="return validateInput()" class="btn btn-success">Search</button>
+                    <button name="search" asp-for="" type="submit" id="SearchBtn" onclick="return validateInput()" class="btn btn-success">Search</button>
                 </div>
-                -->
-            </form>
+                
+            
             
             <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
                 @foreach (var product in Model.ProductsList)

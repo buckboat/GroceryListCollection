@@ -28,8 +28,11 @@ namespace GroceryListUI.Pages
              * 5. Execute the SQL command
              * 6. Close the SQL connection
         */
+
         [BindProperty]
         public GroceryListUI.Pages.Models.ListProduct NewListProduct { get; set; } = new GroceryListUI.Pages.Models.ListProduct();
+        
+
         
         public IActionResult OnGet(string search)
         {
@@ -37,7 +40,7 @@ namespace GroceryListUI.Pages
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Product WHERE ProductName ='%" + search + "%'Order by ProductName";
+                string sql = "SELECT * FROM Product WHERE ProductName ='@SearchBox' Order by ProductName";
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //step 4
@@ -58,6 +61,7 @@ namespace GroceryListUI.Pages
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredient = reader["Ingredient"].ToString();
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        product.SearchBox = reader["SearchBox"].ToString();
 
                     }
                     return RedirectToAction("Index");
@@ -69,6 +73,8 @@ namespace GroceryListUI.Pages
             }
 
         }
+
+
         public IActionResult OnPost(string search)
         {
             if (ModelState.IsValid)
@@ -94,7 +100,7 @@ namespace GroceryListUI.Pages
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
                     // step 2
-                    string sql = "SELECT * FROM Product WHERE ProductName ='%" + search + "%'Order by ProductName";
+                    string sql = "SELECT * FROM Product WHERE ProductName ='@SearchBox' Order by ProductName";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     //step 4
@@ -115,6 +121,7 @@ namespace GroceryListUI.Pages
                             product.Price = decimal.Parse(reader["Price"].ToString());
                             product.Ingredient = reader["Ingredient"].ToString();
                             product.Quantity = int.Parse(reader["Quantity"].ToString());
+                            product.SearchBox = reader["SearchBox"].ToString();
 
                         }
                     }
@@ -131,6 +138,8 @@ namespace GroceryListUI.Pages
             }
 
         }
+
+        
 
     }
 }
