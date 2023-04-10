@@ -37,13 +37,11 @@ namespace GroceryListUI.Pages
                 {
 
                     // step 2
-                    string sql = "INSERT INTO ListProduct(ProductID)" + "VALUES(@productId)";
+                    string sql = "INSERT INTO ListProduct FROM Product WHERE ProductID =@productID";
                         //step 3
-                        SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("@productId", id );
-
-
 
                     //step 4
                     conn.Open();
