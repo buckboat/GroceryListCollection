@@ -2,6 +2,19 @@
 @model GroceryListUI.Pages.Products.IndexModel
 @{
     ViewData["Title"] = "Home page";
+
+    <script type="text/javascript">
+        function validateInput() {
+            var isValid = true;
+            var = productName = document.getElementById("inputProductName");
+
+            if (productName.value === "") {
+                document.getElementById("productNameError").innerHTML = "Product name is requred.";
+                isValid = false;
+            }
+            return isValid;
+        }
+    </script>
 }
 
 <div id="HomeTitle" class="AddProductBg" style="background-color:peachpuff; text-align:center; font-size:2vw; font-size:55px; font-weight:bold;">
@@ -34,8 +47,48 @@
     <div class="row">
         <!--Image-->
         <div class=" AddProductBg col-5" style="background-color:#4CBB17;">
-            <label for="SearchList" class="" style=" background-color:forestgreen; text-align:center; font-size:45px; font-weight:550">Search for your product!</label>
-            <input type="text" class="form-control" id="inputProductSearch" value="Search" />
+
+            <!--Search Bar -->
+            <!--
+            <form asp-action="Index">
+                <div class="input-group  ">
+                    <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" />
+                    <div class="input-group-append">
+
+                        <span class="input-group-text red lighten-3 " id="basic-text1">
+                            <i class="fas fa-search text-grey"
+                               aria-hidden="true">Search</i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            
+            @section scripts{
+            <script>
+                $(function () {
+                    $("#basic-text1").click((function () {
+                        $("Form").submit();
+                    })
+                                });
+            </script>
+            }
+            -->
+
+            
+            <form method="post">
+                <label for="SearchList" class="" style=" background-color:forestgreen; text-align:center; font-size:45px; font-weight:550">Search for your product!</label>
+                <input name="search" type="text" class="form-control" id="inputProductSearch" value="Search" />
+                <a asp-page="SearchProduct" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                    <i class="bi bi-binoculars-fill mx-2"></i>Search
+                </a>
+
+            <!--
+                <div class="AddProductBg col-sm-2 row align-items-center ">
+                    <button name="search" type="submit" id="SearchBtn" onclick="return validateInput()" class="btn btn-success">Search</button>
+                </div>
+                -->
+            </form>
+            
             <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
                 @foreach (var product in Model.ProductsList)
                 {
@@ -86,44 +139,44 @@
             <div style="background-color:dodgerblue; text-align:center; font-size:45px; font-weight:bold; ">
                 Shopping List
                 <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
-                @foreach (var product in Model.ProductsList)
-                {
-                    <!-- Search Name-->
-                    <div class="row mb-5 align-content-center  " style="background-color:darkcyan" >
-                        <hr size="10">
+                    @foreach (var product in Model.ProductsList)
+                    {
+                        <!-- Search Name-->
+                        <div class="row mb-5 align-content-center  " style="background-color:darkcyan">
+                            <hr size="10">
 
-                        <div class="row">
-                            <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
-                                <b>@product.ProductName </b>
+                            <div class="row">
+                                <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
+                                    <b>@product.ProductName </b>
+                                </div>
+                            </div>
+
+                            <!-- Search Image-->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                                </div>
+                                <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
+                                    <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
+
+
+                                </div>
+                            </div>
+
+                            <!-- Search Price-->
+                            <div class="row">
+                                <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
+                                    <b>$<i>@product.Price</i></b>
+                                </div>
+                                <div class="col-6">
+                                    <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                        <i class="bi bi-pencil-square mx-2"></i>Remove Item
+                                    </a>
+
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Search Image-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
-                            </div>
-                            <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
-                                <b>Qty:</b><input type="text" class="form-control" id="inputQuantity"value="@product.Quantity" />
-                                    
-                                
-                            </div>
-                        </div>
-
-                        <!-- Search Price-->
-                        <div class="row">
-                            <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
-                                <b>$<i>@product.Price</i></b>
-                            </div>
-                            <div class="col-6">
-                                <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                                    <i class="bi bi-pencil-square mx-2"></i>Remove Item
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                }
+                    }
                 </div>
             </div>
         </div>
