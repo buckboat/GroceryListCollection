@@ -4,6 +4,8 @@ using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
 
 
+//crfeate class 
+
 
 
 namespace GroceryListUI.Pages
@@ -13,12 +15,6 @@ namespace GroceryListUI.Pages
 
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
 
         /*
            * 1. Create a SQL connection object
@@ -29,18 +25,22 @@ namespace GroceryListUI.Pages
              * 6. Close the SQL connection
         */
 
+        //[BindProperty]
+        // public List<Product> SearchedProduct { get; set; } = new List<Product>();
         [BindProperty]
-        public GroceryListUI.Pages.Models.ListProduct NewListProduct { get; set; } = new GroceryListUI.Pages.Models.ListProduct();
-        
+        public string SearchBox;
 
-        
-        public IActionResult OnGet(string search)
+        public List<Product> ProductsListMain { get; set; } = new List<Product>();
+
+
+
+        public IActionResult OnGet()
         {
             // step 1
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Product WHERE ProductName ='@SearchBox' Order by ProductName";
+                string sql = "SELECT * FROM Product Order by ProductName";
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //step 4
@@ -53,7 +53,9 @@ namespace GroceryListUI.Pages
                     {
 
                         Product product = new Product();
+                        
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
+                        
                         product.ProductName = reader["ProductName"].ToString();
                         product.ImageURL = reader["ImageURL"].ToString();
                         product.NutrtionLabel = reader["NutrtionLabel"].ToString();
@@ -61,7 +63,7 @@ namespace GroceryListUI.Pages
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredient = reader["Ingredient"].ToString();
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
-                        product.SearchBox = reader["SearchBox"].ToString();
+                        ProductsListMain.Add(product);
 
                     }
                     return RedirectToAction("Index");
@@ -122,6 +124,7 @@ namespace GroceryListUI.Pages
                             product.Ingredient = reader["Ingredient"].ToString();
                             product.Quantity = int.Parse(reader["Quantity"].ToString());
                             product.SearchBox = reader["SearchBox"].ToString();
+                            SearchedProduct.Add(product);
 
                         }
                     }
