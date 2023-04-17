@@ -28,7 +28,7 @@ namespace GroceryListUI.Pages
         //[BindProperty]
         // public List<Product> SearchedProduct { get; set; } = new List<Product>();
         [BindProperty]
-        public string SearchBox;
+        //public string SearchBox;
 
         public List<Product> ProductsListMain { get; set; } = new List<Product>();
 
@@ -124,7 +124,7 @@ namespace GroceryListUI.Pages
                             product.Ingredient = reader["Ingredient"].ToString();
                             product.Quantity = int.Parse(reader["Quantity"].ToString());
                             product.SearchBox = reader["SearchBox"].ToString();
-                            SearchedProduct.Add(product);
+                            //SearchedProduct.Add(product);
 
                         }
                     }
