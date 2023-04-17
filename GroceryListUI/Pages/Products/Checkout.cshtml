@@ -1,6 +1,7 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.IndexModel
 @{
+    decimal total = 0;
 }
 <div id="SearchList" class="col-sm-12 align-content-center">
     <label for="ListTitle" class=""></label>
@@ -10,7 +11,7 @@
             @foreach (var product in Model.ProductsList)
             {
                 <!-- Search Name-->
-                <div class="row mb-5 align-content-center  " style="background-color:darkcyan">
+                <div class="row mb-5 align-content-center" style="background-color:darkcyan">
                     <hr size="10">
 
                     <div class="row">
@@ -54,8 +55,12 @@
     <p>&nbsp;</p>
 </div>
 
-    <div class="col-sm-12 offset-md-10">
-        <a asp-page="TotalPage" class="btn btn-success">
-            <i class="bi bi-calculator mx-2"></i>Calculate Total
-        </a>
+<div class="col-sm-12 offset-md-10">
+    <div class="row">
+        @foreach (var product in Model.ProductsList)
+        {
+            total = total + (@product.Price * @product.Quantity);
+        }
+        <h1><b>Your total is: <i>$@total</i></b></h1>
     </div>
+</div>
