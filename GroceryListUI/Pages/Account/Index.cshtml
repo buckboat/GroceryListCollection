@@ -6,9 +6,9 @@
 
         <div id="accountTitle" class="AddProductBg align-content-center mb-3 " style="background-color:lightcoral; align-content:center; text-align:center; font-weight:500; font-size:35px; ">Create Your Account</div>
 
-        <div class="AddProductBg row mb-3" style="background-color:lightcoral">
+        <div class="AddProductBg row mb-3 align-content-center" style="background-color:lightcoral">
             <div class="col-sm-6">
-            <label for="inputaccountName" class="col-form-label" style="font-weight:400; font-size:25px;">Email:</label>
+            <label asp-for="User.Email" for="inputaccountName" class="col-form-label" style="font-weight:400; font-size:25px;">Email:</label>
             </div>
             
             <div class="col-sm-6">
@@ -20,9 +20,10 @@
             -->
         </div>
 
-        <div class="AddProductBg row mb-3" style="background-color:lightcoral">
-            <div class="col-sm-6" style="align-content:center;">
-                <label for="inputaccountName" class="col-form-label" style=" ;font-weight:400;font-size:25px;">First Name:</label>
+        <div class="AddProductBg row mb-3" style="background-color:lightcoral; align-content:center  ">
+           
+        <div class="col-sm-6 align-content-center " style="align-content:center;">
+                <label asp-for="User.FirstName" for="inputaccountName" class="col-form-label align-content-center " style=" ;font-weight:400;font-size:25px;">First Name:</label>
             </div>
 
             <div class="col-sm-6">
@@ -33,12 +34,30 @@
 
         <div class="AddProductBg row mb-3" style="background-color:lightcoral">
             <div class="col-sm-6">
-                <label for="inputaccountName" class="col-form-label" style="font-weight:400;font-size:25px;">Last Name:</label>
+                <label asp-for="User.LastName" for="inputaccountName" class="col-form-label" style="font-weight:400;font-size:25px;">Last Name:</label>
             </div>
 
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="inputPrice" />
             </div>
+
+
+
+        </div>
+
+
+                <div class="AddProductBg row mb-3" style="background-color:lightcoral">
+            <div class="col-sm-6">
+                <label asp-for="User.Password" for="inputaccountName" class="col-form-label" style="font-weight:400;font-size:25px;">Password:</label>
+            </div>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputPrice" />
+            </div>
+
+        <div>
+        
+        <button type="submit" class = "btn-primary">Login/Create Account</button>
 
         </div>
 

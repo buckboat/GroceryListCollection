@@ -25,12 +25,30 @@ namespace GroceryListUI.Pages
              * 6. Close the SQL connection
         */
 
+        
+        public class ProductSearch
+        {
+
+            public string SearchBox { get; set; } = string.Empty;
+
+            List<Product>? ProductSearchList { get; set; }
+
+ 
+
+        }
+
+
+
+
         //[BindProperty]
-        // public List<Product> SearchedProduct { get; set; } = new List<Product>();
+        public List<Product> SearchedProduct { get; set; } = new List<Product>();
+
+
+
         [BindProperty]
         //public string SearchBox;
 
-        public List<Product> ProductsListMain { get; set; } = new List<Product>();
+        public ProductSearch ProductsListMain { get; set; } = new ProductSearch();
 
 
 
@@ -63,7 +81,7 @@ namespace GroceryListUI.Pages
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredient = reader["Ingredient"].ToString();
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
-                        ProductsListMain.Add(product);
+                        //producl.Add(product);
 
                     }
                     return RedirectToAction("Index");
