@@ -7,7 +7,7 @@ namespace GroceryListUI.Pages.Account
 {
     public class IndexModel : PageModel
     {
-        //[BindProperty]
+        [BindProperty]
         public User NewUser { get; set; } = new User();
         //public UserCreds User { get; set; } = new UserCreds();
 
@@ -38,7 +38,7 @@ namespace GroceryListUI.Pages.Account
                 {
 
                     // step 2
-                    string sql = "INSERT INTO User(FirstName,LastName,Email,Password)" +
+                    string sql = "INSERT INTO [User](First Name,Last Name,Email,PasswordHash)" +
                         "VALUES(@firstName, @lastName, @email, @password)";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
