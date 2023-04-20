@@ -38,7 +38,7 @@ namespace GroceryListUI.Pages.Account
                 {
 
                     // step 2
-                    string sql = "INSERT INTO [User](First Name,Last Name,Email,PasswordHash)" +
+                    string sql = "INSERT INTO [User]([First Name],[Last Name],Email,PasswordHash)" +
                         "VALUES(@firstName, @lastName, @email, @password)";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
