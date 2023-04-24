@@ -42,24 +42,44 @@ namespace GroceryListUI.Pages
 
         }
 
+        public class UserList
+        {
+            public int ListID { get; set; }
+
+            public int productId { get; set; }
+
+            public List<Product> products { get; set; }
+
+        }
 
 
 
-        //[BindProperty]
-        public List<Product> SearchedProduct { get; set; } = new List<Product>();
+
+        [BindProperty]
+        public List<Product> ProductListMain { get; set; } = new List<Product>();
 
 
 
         [BindProperty]
         public ProductSearch ProductsListMain { get; set; } = new ProductSearch();
 
+        [BindProperty]
+
+        public List<UserList> UseList { get; set; } = new List<UserList>();
 
 
 
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
             // step 1
+            GetDatabase();
+            GetUserList();
+
+        }
+
+        public IActionResult GetDatabase()
+        {
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
                 // step 2
@@ -75,7 +95,7 @@ namespace GroceryListUI.Pages
                     while (reader.Read())
                     {
 
-                        Product product = new Product();
+                        Product product = new Product ();
 
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
 
@@ -86,6 +106,48 @@ namespace GroceryListUI.Pages
                         product.Price = decimal.Parse(reader["Price"].ToString());
                         product.Ingredient = reader["Ingredient"].ToString();
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        ProductListMain.Add(product);
+
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Page();
+                }
+            }
+        }
+
+        public IActionResult GetUserList()
+        {
+            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            {
+                // step 2
+                string sql = "SELECT * FROM List WHERE ListID = 1";
+                //step 3
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                //step 4
+                conn.Open();
+                //step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        UserList uList = new UserList();
+                        Product product = new Product();
+
+
+                        //uList.ListID = int.Parse(reader["1"].ToString());
+
+                        //uList.products.Add( );   
+                        //uList.products.   ImageURL = reader["ImageURL"].ToString();
+                        
+                        
+                        //product.Price = decimal.Parse(reader["Price"].ToString());
+                        //product.Ingredient = reader["Ingredient"].ToString();
+                        //product.Quantity = int.Parse(reader["Quantity"].ToString());
                         //producl.Add(product);
 
                     }
@@ -96,7 +158,6 @@ namespace GroceryListUI.Pages
                     return Page();
                 }
             }
-
         }
 
 
@@ -129,7 +190,7 @@ namespace GroceryListUI.Pages
 
 
                     // step 2
-                    string sql = "INSERT INTO ListProduct(ListId,ProductID) Values(@listID, @productID)";
+                    string sql = "INSERT INTO ListProduct(ListID,ProductID) Values( 1, @productID)";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     //step 4
@@ -143,7 +204,7 @@ namespace GroceryListUI.Pages
 
                             Product product = new Product();
 
-                            cmd.Parameters.AddWithValue("@listId", 1);
+                            //cmd.Parameters.AddWithValue("@listname" ,"default" );
                             cmd.Parameters.AddWithValue("@productID", id);
 
                             //product.ProductID = int.Parse(reader["ProductID"].ToString());
@@ -155,7 +216,7 @@ namespace GroceryListUI.Pages
                             //product.Ingredient = reader["Ingredient"].ToString();
                             //product.Quantity = int.Parse(reader["Quantity"].ToString());
                             //product.SearchBox = reader["SearchBox"].ToString();
-                            SearchedProduct.Add(product);
+                            ProductListMain.Add(product);
 
                             //step 4
                             conn.Open();
