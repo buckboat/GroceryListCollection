@@ -1,0 +1,49 @@
+﻿@page
+@model GroceryListUI.Pages.Products.CheckoutEditModel
+@{
+}
+
+<script type="text/javascript">
+    function validateInput() {
+        var isValid = true;
+        var = quantityName = document.getElementById("inputQuantityName");
+
+        if (quantityName.value === "") {
+            document.getElementById("quantityNameError").innerHTML = "Quantity is requred.";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+</script>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!--Logo-->
+    <div class="row mt-3 mb-3">
+        <div class="col-sm-2">
+            <img src="https://m.media-amazon.com/images/I/51ci9LqaybL._AC_SL1000_.jpg" style="width:100%;max-width:100px" />
+        </div>
+
+        <!--Quantity-->
+        <div class="row mb-3">
+        <div class="AddProductBg row mb-3">
+            <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity:</label>
+                <input type="text" class="form-control" id="inputQuantity" asp-for="ExistingProduct.Quantity" />
+            <span asp-validation-for="ExistingProduct.Quantity" class="text-danger" id="quantityNameError"></span>
+            </div>
+
+                <!--Price-->
+                <div class="AddProductBg col-sm-5">
+                    <label for="inputPrice" class=" col-sm-3 col-form-label">Price:</label>
+                    <input type="text" class="form-control" id="inputPrice" asp-for="ExistingProduct.Price" />
+                </div>
+            </div>
+
+
+        <div class="AddProductBg col-sm-2 row align-items-center ">
+            <button type="submit" id="EditProductBtn" onclick="return validateInput()" class="btn btn-success">Update Quantity</button>
+        </div>
+    </div>
+</form>

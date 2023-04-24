@@ -29,7 +29,6 @@
                         <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
                             <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
 
-
                         </div>
                     </div>
 
@@ -39,8 +38,8 @@
                             <b>$<i>@product.Price</i></b>
                         </div>
                         <div class="col-6">
-                            <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                                <i class="bi bi-pencil-square mx-2"></i>Remove Item
+                            <a asp-page="CheckoutEdit" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                <i class="bi bi-pencil-square mx-2"></i>Edit Item Price and Quantity
                             </a>
 
                         </div>
