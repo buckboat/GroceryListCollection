@@ -30,11 +30,11 @@ namespace GroceryListUI.Pages
              * 6. Close the SQL connection
         */
 
-
+        
         public class ProductSearch
         {
 
-            public string SearchBox { get; set; } = string.Empty;
+            public string SearchaBox { get; set; } = string.Empty;
 
             List<Product>? ProductSearchList { get; set; }
 
@@ -52,7 +52,8 @@ namespace GroceryListUI.Pages
 
         }
 
-
+        [BindProperty]
+        public string SearchBox { get; set; } = String.Empty;
 
 
         [BindProperty]
@@ -95,7 +96,7 @@ namespace GroceryListUI.Pages
                     while (reader.Read())
                     {
 
-                        Product product = new Product ();
+                        Product product = new Product();
 
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
 
@@ -143,8 +144,8 @@ namespace GroceryListUI.Pages
 
                         //uList.products.Add( );   
                         //uList.products.   ImageURL = reader["ImageURL"].ToString();
-                        
-                        
+
+
                         //product.Price = decimal.Parse(reader["Price"].ToString());
                         //product.Ingredient = reader["Ingredient"].ToString();
                         //product.Quantity = int.Parse(reader["Quantity"].ToString());
@@ -161,87 +162,98 @@ namespace GroceryListUI.Pages
         }
 
 
-        public IActionResult OnPost(int id) // should add product to users list
+        public void OnPost() // should add product to users list
         {
-            if (ModelState.IsValid)
-            {
-                // step 1
-                /*
-                using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
-                {
+            Search();
 
-                    // step 2
-                    string sql = "INSERT INTO ListProduct FROM Product WHERE ProductID =@productID";
-                        //step 3
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+            AddToList();
 
-                    cmd.Parameters.AddWithValue("@productId", id );
-
-                    //step 4
-                    conn.Open();
-                    //step 5
-                    cmd.ExecuteNonQuery();
-                }
-                */
-
-                using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
-                {
-
-
-
-                    // step 2
-                    string sql = "INSERT INTO ListProduct(ListID,ProductID) Values( 1, @productID)";
-                    //step 3
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    //step 4
-                    conn.Open();
-                    //step 5
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-
-                            Product product = new Product();
-
-                            //cmd.Parameters.AddWithValue("@listname" ,"default" );
-                            cmd.Parameters.AddWithValue("@productID", id);
-
-                            //product.ProductID = int.Parse(reader["ProductID"].ToString());
-                            //product.ProductName = reader["ProductName"].ToString();
-                            //product.ImageURL = reader["ImageURL"].ToString();
-                            //product.NutrtionLabel = reader["NutrtionLabel"].ToString();
-                            //product.Description = reader["Description"].ToString();
-                            //product.Price = decimal.Parse(reader["Price"].ToString());
-                            //product.Ingredient = reader["Ingredient"].ToString();
-                            //product.Quantity = int.Parse(reader["Quantity"].ToString());
-                            //product.SearchBox = reader["SearchBox"].ToString();
-                            ProductListMain.Add(product);
-
-                            //step 4
-                            conn.Open();
-                            //step 5
-                            cmd.ExecuteNonQuery();
-
-                        }
-                    }
-
-                }
-
-
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return Page();
-            }
 
         }
 
-  
+        public void Search() {
 
-        
+            string sql = "SELECT * FROM Product WHERE ProductName LIKE @productName Order by ProductName";
+
+            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            {
+
+                //step 3
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@productName", "%%%%%%%" + SearchBox + "%%%%%%");
+                //step 4
+                conn.Open();
+                //step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        Product product = new Product();
+
+                        product.ProductID = int.Parse(reader["ProductID"].ToString());
+                        product.ProductName = reader["ProductName"].ToString();
+                        product.ImageURL = reader["ImageURL"].ToString();
+                        product.NutrtionLabel = reader["NutrtionLabel"].ToString();
+                        product.Description = reader["Description"].ToString();
+                        product.Price = decimal.Parse(reader["Price"].ToString());
+                        product.Ingredient = reader["Ingredient"].ToString();
+                        product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        //product.SearchBox = reader["SearchBox"].ToString();
+                        ProductListMain.Add(product);
+
+
+                    }
+                }
+
+            }
+        }
+
+        public IActionResult AddToList()
+        {
+
+            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            {
+                // step 2
+                string sql = "SELECT * FROM Product Order by ProductName";
+                //step 3
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                //step 4
+                conn.Open();
+                //step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        Product product = new Product();
+
+                        product.ProductID = int.Parse(reader["ProductID"].ToString());
+
+                        product.ProductName = reader["ProductName"].ToString();
+                        product.ImageURL = reader["ImageURL"].ToString();
+                        product.NutrtionLabel = reader["NutrtionLabel"].ToString();
+                        product.Description = reader["Description"].ToString();
+                        product.Price = decimal.Parse(reader["Price"].ToString());
+                        product.Ingredient = reader["Ingredient"].ToString();
+                        product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        ProductListMain.Add(product);
+
+                    }
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Page();
+                }
+            }
+
+
+
+        }
+
     }
 
 }
