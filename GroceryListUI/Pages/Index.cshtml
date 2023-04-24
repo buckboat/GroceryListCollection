@@ -1,5 +1,5 @@
 ﻿@page
-@model GroceryListUI.Pages.Products.IndexModel;
+@model GroceryListUI.Pages.IndexModel;
 @{
     ViewData["Title"] = "Home page";
 
@@ -79,7 +79,7 @@
             
             
             <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
-                @foreach (var product in Model.ProductsList)
+                @foreach (var product in Model.ProductListMain)
                 {
                     <!-- Product List-->
 
@@ -128,7 +128,7 @@
             <div style="background-color:dodgerblue; text-align:center; font-size:45px; font-weight:bold; ">
                 Shopping List
                 <div style="height:66vw;overflow-y:auto; overflow-x:hidden">
-                    @foreach (var product in Model.ProductsList)
+                    @foreach (var uList in Model.UseList)
                     {
                         <!-- Search Name-->
                         <div class="row mb-5 align-content-center  " style="background-color:darkcyan">
@@ -136,17 +136,17 @@
 
                             <div class="row">
                                 <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
-                                    <b>@product.ProductName </b>
+                                    <b>@uList.products </b>
                                 </div>
                             </div>
 
                             <!-- Search Image-->
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                                    <img src="@uList.products" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
                                 </div>
                                 <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
-                                    <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
+                                    <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@uList.products" />
 
 
                                 </div>
@@ -155,10 +155,10 @@
                             <!-- Search Price-->
                             <div class="row">
                                 <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
-                                    <b>$<i>@product.Price</i></b>
+                                    <b>$<i>@uList.products</i></b>
                                 </div>
                                 <div class="col-6">
-                                    <a asp-page="Index" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                    <a asp-page="Index" asp-route-id="@uList.products" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
                                         <i class="bi bi-dash-circle-fill mx-2"></i>Remove Item
                                     </a>
 
