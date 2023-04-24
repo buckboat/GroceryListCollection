@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using System.Reflection.Metadata.Ecma335;
 
 
 //crfeate class 
@@ -11,8 +15,8 @@ using System.Collections.Generic;
 
 namespace GroceryListUI.Pages
 {
-    
-    
+
+
 
     public class IndexModel : PageModel
     {
@@ -26,7 +30,7 @@ namespace GroceryListUI.Pages
              * 6. Close the SQL connection
         */
 
-        
+
         public class ProductSearch
         {
 
@@ -34,7 +38,7 @@ namespace GroceryListUI.Pages
 
             List<Product>? ProductSearchList { get; set; }
 
- 
+
 
         }
 
@@ -48,6 +52,8 @@ namespace GroceryListUI.Pages
 
         [BindProperty]
         public ProductSearch ProductsListMain { get; set; } = new ProductSearch();
+
+
 
 
 
@@ -70,9 +76,9 @@ namespace GroceryListUI.Pages
                     {
 
                         Product product = new Product();
-                        
+
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
-                        
+
                         product.ProductName = reader["ProductName"].ToString();
                         product.ImageURL = reader["ImageURL"].ToString();
                         product.NutrtionLabel = reader["NutrtionLabel"].ToString();
@@ -172,7 +178,9 @@ namespace GroceryListUI.Pages
 
         }
 
-        
+  
 
+        
     }
+
 }

@@ -11,6 +11,7 @@ namespace GroceryListUI.Pages.Account
         public User NewUser { get; set; } = new User();
         //public UserCreds User { get; set; } = new UserCreds();
 
+        /*
         public class UserCreds
         {
 
@@ -22,7 +23,7 @@ namespace GroceryListUI.Pages.Account
             public string Password { get; set; }
 
 
-        }
+        }*/
 
         public void OnGet()
         {
