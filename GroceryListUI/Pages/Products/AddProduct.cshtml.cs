@@ -70,7 +70,7 @@ namespace GroceryListUI.Pages.Products
                     cmd.Parameters.AddWithValue("@description", NewProduct.Description);
                     cmd.Parameters.AddWithValue("@price", NewProduct.Price);
                     cmd.Parameters.AddWithValue("@ingredient", NewProduct.Ingredient);
-                    cmd.Parameters.AddWithValue("@quantity", NewProduct.Quantity);
+                    cmd.Parameters.AddWithValue("@quantity", 1);
                     
                     //step 4
                     conn.Open();

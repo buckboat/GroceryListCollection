@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
+using System.Collections.Generic;
 
 
 //crfeate class 
@@ -46,8 +47,6 @@ namespace GroceryListUI.Pages
 
 
         [BindProperty]
-        //public string SearchBox;
-
         public ProductSearch ProductsListMain { get; set; } = new ProductSearch();
 
 
@@ -95,7 +94,7 @@ namespace GroceryListUI.Pages
         }
 
 
-        public IActionResult OnPost(string search)
+        public IActionResult OnPost(int id) // should add product to users list
         {
             if (ModelState.IsValid)
             {
@@ -117,10 +116,14 @@ namespace GroceryListUI.Pages
                     cmd.ExecuteNonQuery();
                 }
                 */
+
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
+
+
+
                     // step 2
-                    string sql = "SELECT * FROM Product WHERE ProductName ='@SearchBox' Order by ProductName";
+                    string sql = "INSERT INTO ListProduct(ListId,ProductID) Values(@listID, @productID)";
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     //step 4
@@ -133,16 +136,25 @@ namespace GroceryListUI.Pages
                         {
 
                             Product product = new Product();
-                            product.ProductID = int.Parse(reader["ProductID"].ToString());
-                            product.ProductName = reader["ProductName"].ToString();
-                            product.ImageURL = reader["ImageURL"].ToString();
-                            product.NutrtionLabel = reader["NutrtionLabel"].ToString();
-                            product.Description = reader["Description"].ToString();
-                            product.Price = decimal.Parse(reader["Price"].ToString());
-                            product.Ingredient = reader["Ingredient"].ToString();
-                            product.Quantity = int.Parse(reader["Quantity"].ToString());
-                            product.SearchBox = reader["SearchBox"].ToString();
-                            //SearchedProduct.Add(product);
+
+                            cmd.Parameters.AddWithValue("@listId", 1);
+                            cmd.Parameters.AddWithValue("@productID", id);
+
+                            //product.ProductID = int.Parse(reader["ProductID"].ToString());
+                            //product.ProductName = reader["ProductName"].ToString();
+                            //product.ImageURL = reader["ImageURL"].ToString();
+                            //product.NutrtionLabel = reader["NutrtionLabel"].ToString();
+                            //product.Description = reader["Description"].ToString();
+                            //product.Price = decimal.Parse(reader["Price"].ToString());
+                            //product.Ingredient = reader["Ingredient"].ToString();
+                            //product.Quantity = int.Parse(reader["Quantity"].ToString());
+                            //product.SearchBox = reader["SearchBox"].ToString();
+                            SearchedProduct.Add(product);
+
+                            //step 4
+                            conn.Open();
+                            //step 5
+                            cmd.ExecuteNonQuery();
 
                         }
                     }

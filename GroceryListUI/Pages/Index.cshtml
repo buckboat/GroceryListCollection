@@ -24,7 +24,7 @@
 <div id="HomeTitle" class="AddProductBg" style="background-color:peachpuff; text-align:center; font-size:2vw; font-size:55px; font-weight:bold;">
     <h1 class="display-4" style="font-weight:800">Welcome to Grocery List</h1>
 </div>
-<form method="get">
+
     <!--
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     -->
@@ -48,7 +48,7 @@
 
         </a>
     </div>
-
+<form method="get">
     <div class="row">
         <!--Image-->
         
@@ -108,9 +108,9 @@
                         <div class="row">
 
                             <div class="col-12">
-                                <div asp-route-id="@product.ProductID" class="btn btn-success" style="width:100%;height:auto;margin-left:8px">
+                                <a  asp-route-id="@product.ProductID" class="btn btn-success" style="width:100%;height:auto;margin-left:8px">
                                     <i class="bi bi-check-circle-fill mx-2"></i>Add Item
-                                </div>
+                                </a>
 
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                     <b>$<i>@product.Price</i></b>
                                 </div>
                                 <div class="col-6">
-                                    <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                    <a asp-page="Index" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
                                         <i class="bi bi-dash-circle-fill mx-2"></i>Remove Item
                                     </a>
 
