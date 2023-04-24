@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryListUI.Pages.Products
 {
+    [Authorize]
     public class AddProduct : PageModel
     {
         [BindProperty]
