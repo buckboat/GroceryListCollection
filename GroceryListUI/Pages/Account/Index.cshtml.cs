@@ -40,13 +40,14 @@ namespace GroceryListUI.Pages.Account
 
                     // step 2
                     string sql = "INSERT INTO [User]([First Name],[Last Name],Email,PasswordHash)" +
-                        "VALUES(@firstName, @lastName, @email, @password); INSERT INTO List(ListName) VALUES(Default)"; 
+                        "VALUES(@firstName, @lastName, @email, @password); INSERT INTO List(ListName) VALUES(@listName)"; 
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@firstName", NewUser.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", NewUser.LastName);
                     cmd.Parameters.AddWithValue("@email", NewUser.Email);
                     cmd.Parameters.AddWithValue("@password", NewUser.Password);
+                    cmd.Parameters.AddWithValue("@listName", "Default");
                    // cmd.Parameters.AddWithValue("@price", NewProduct.Price);
                    // cmd.Parameters.AddWithValue("@ingredient", NewProduct.Ingredient);
                    // cmd.Parameters.AddWithValue("@quantity", NewProduct.Quantity);
