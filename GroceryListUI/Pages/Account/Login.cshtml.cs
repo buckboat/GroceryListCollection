@@ -25,7 +25,7 @@ namespace GroceryListUI.Pages.Account
             public string Password { get; set; }
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
@@ -36,8 +36,8 @@ namespace GroceryListUI.Pages.Account
 
                     var claims = new List<Claim>{
                         new Claim(ClaimTypes.Email, LoginInfo.Email),
-                        new Claim(ClaimTypes.Name, "cats"),
-                        new Claim("cats", "Admin")
+                        new Claim(ClaimTypes.Name, "Bob"),
+                        new Claim("Username", "Admin")
                     };
 
 
@@ -59,6 +59,9 @@ namespace GroceryListUI.Pages.Account
 
 
         }
+
+
+      
 
     }
 }

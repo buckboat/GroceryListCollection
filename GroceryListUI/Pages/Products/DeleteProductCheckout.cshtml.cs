@@ -1,10 +1,12 @@
 using GroceryListUI.Pages.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 
 namespace GroceryListUI.Pages.Products
 {
+    [Authorize]
     public class DeleteProductCheckoutModel : PageModel
     {
         public IActionResult OnGet(int id)

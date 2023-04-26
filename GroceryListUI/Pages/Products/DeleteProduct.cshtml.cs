@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryListUI.Pages.Products
 {
-    //[Authorize]
+    [Authorize]
     public class DeleteProductModel : PageModel
     {
         public IActionResult OnGet(int id)

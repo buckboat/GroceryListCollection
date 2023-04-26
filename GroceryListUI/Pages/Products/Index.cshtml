@@ -1,6 +1,10 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.IndexModel;
 @{
+        if(HttpContext.User.Identity != null)
+    {
+       Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenticatedLayout" : "_Layout";
+    }
 }
 
 <div class=" container">

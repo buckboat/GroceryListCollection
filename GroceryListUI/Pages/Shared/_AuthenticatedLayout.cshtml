@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
-<header>
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-success border-bottom box-shadow mb-5">
             <div class="container">
                 <img src="https://m.media-amazon.com/images/I/51ci9LqaybL._AC_SL1000_.jpg" style="width:100%;max-width:50px" />
@@ -22,34 +22,42 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <!--
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <!--
+                        
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Products/AddProduct">Add Product</a>
                         </li> -->
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Products/Index">Products</a>
-                        </li>               
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Signout">Sign Out</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Account/Logout">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    <div>
+    <div class="container">
+        <main role="main" class="pb-3">
         @RenderBody()
     </div>
 
-        <footer class="border-top footer bg-success text-muted">
+    <footer class="border-top footer bg-success text-muted">
         <div class="container text-light bg-success">
             &copy; 2023 - GroceryListUI - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
