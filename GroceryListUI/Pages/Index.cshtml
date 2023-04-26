@@ -117,12 +117,12 @@
 
                         <div class="row">
 
-                            <div class="col-12">
-                                <a  asp-route-id="@product.ProductID" class="btn btn-success" style="width:100%;height:auto;margin-left:8px">
-                                    <i class="bi bi-check-circle-fill mx-2"></i>Add Item
-                                </a>
 
-                            </div>
+
+                            <a asp-page="Products/AddProductToList" asp-route-id="@product.ProductID" class="btn btn-primary btn-danger"
+                           onclick="return confirm('Are you sure you want to Add this product?')">
+                                <i class="bi bi-x-circle mx-2"></i>Addd Item
+                            </a>
                         </div>
                     </div>
                 }
@@ -148,17 +148,17 @@
 
                             <div class="row">
                                 <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
-                                    <b>@uList.products </b>
+                                    <b>@uList.ProductName </b>
                                 </div>
                             </div>
 
                             <!-- Search Image-->
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <img src="@uList.products" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                                    <img src="@uList.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
                                 </div>
                                 <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
-                                    <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@uList.products" />
+                                    <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@uList.Quantity" />
 
 
                                 </div>
@@ -167,10 +167,10 @@
                             <!-- Search Price-->
                             <div class="row">
                                 <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
-                                    <b>$<i>@uList.products</i></b>
+                                    <b>$<i>@uList.Price</i></b>
                                 </div>
                                 <div class="col-6">
-                                    <a asp-page="Index" asp-route-id="@uList.products" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
+                                    <a asp-page="Index" asp-route-id="@uList.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
                                         <i class="bi bi-dash-circle-fill mx-2"></i>Remove Item
                                     </a>
 

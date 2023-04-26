@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using System.Reflection.Metadata.Ecma335;
+using System.ComponentModel.DataAnnotations;
 
 
 //crfeate class 
@@ -46,9 +47,21 @@ namespace GroceryListUI.Pages
         {
             public int ListID { get; set; }
 
-            public int productId { get; set; }
+            public int ProductID { get; set; }
 
-            public List<Product> products { get; set; }
+            public string ProductName { get; set; } = string.Empty;
+
+            public string ImageURL { get; set; } = string.Empty;
+
+            public string NutrtionLabel { get; set; } = string.Empty;
+
+            public string Description { get; set; } = string.Empty;
+
+            public decimal Price { get; set; }
+
+            public string Ingredient { get; set; } = string.Empty;
+
+            public int Quantity { get; set; }
 
         }
 
@@ -124,7 +137,10 @@ namespace GroceryListUI.Pages
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM List WHERE ListID = 1";
+                string sql = "SELECT Product.ProductID, Product.ImageURL, Product.ProductName, Product.Price,List.ListID,Product.Quantity " +
+                   "FROM ((Product INNER JOIN ListProduct ON Product.ProductID = ListProduct.ProductID)"+
+                                  "INNER JOIN List ON List.ListID = ListProduct.ListID) WHERE List.ListId = 1 Order by Product.ProductName";
+
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //step 4
@@ -137,19 +153,16 @@ namespace GroceryListUI.Pages
                     {
 
                         UserList uList = new UserList();
-                        Product product = new Product();
+
 
 
                         //uList.ListID = int.Parse(reader["1"].ToString());
 
-                        //uList.products.Add( );   
-                        //uList.products.   ImageURL = reader["ImageURL"].ToString();
-
-
-                        //product.Price = decimal.Parse(reader["Price"].ToString());
-                        //product.Ingredient = reader["Ingredient"].ToString();
-                        //product.Quantity = int.Parse(reader["Quantity"].ToString());
-                        //producl.Add(product);
+                        uList.ImageURL = reader["ImageURL"].ToString();
+                        uList.Price = decimal.Parse(reader["Price"].ToString());
+                        uList.ProductName = reader["ProductName"].ToString();
+                        uList.Quantity = int.Parse(reader["Quantity"].ToString());
+                        UseList.Add(uList);
 
                     }
                     return RedirectToAction("Index");
@@ -216,7 +229,7 @@ namespace GroceryListUI.Pages
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Product Order by ProductName";
+                string sql = "INSERT INTO ListProduct(ListID, ProductID) VALUES(1,@productID)";
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //step 4
@@ -232,13 +245,13 @@ namespace GroceryListUI.Pages
 
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
 
-                        product.ProductName = reader["ProductName"].ToString();
-                        product.ImageURL = reader["ImageURL"].ToString();
-                        product.NutrtionLabel = reader["NutrtionLabel"].ToString();
-                        product.Description = reader["Description"].ToString();
-                        product.Price = decimal.Parse(reader["Price"].ToString());
-                        product.Ingredient = reader["Ingredient"].ToString();
-                        product.Quantity = int.Parse(reader["Quantity"].ToString());
+                        //product.ProductName = reader["ProductName"].ToString();
+                        //product.ImageURL = reader["ImageURL"].ToString();
+                        //product.NutrtionLabel = reader["NutrtionLabel"].ToString();
+                        //product.Description = reader["Description"].ToString();
+                        //product.Price = decimal.Parse(reader["Price"].ToString());
+                        //product.Ingredient = reader["Ingredient"].ToString();
+                        //product.Quantity = int.Parse(reader["Quantity"].ToString());
                         ProductListMain.Add(product);
 
                     }
