@@ -10,7 +10,7 @@
         <div style="height:overflow-y:auto; overflow-x:hidden">
             @foreach (var product in Model.ProductsList)
             {
-                <!-- Search Name-->
+                <!--Name-->
                 <div class="row mb-5 align-content-center" style="background-color:darkcyan">
                     <hr size="10">
 
@@ -20,31 +20,35 @@
                         </div>
                     </div>
 
-                    <!-- Search Image-->
+                    <!--Image-->
                     <div class="row">
                         <div class="col-sm-6">
                             <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
                             <img src="@product.NutrtionLabel" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
                         </div>
                         <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
-                            <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
-
-                        </div>
-                    </div>
-
-                    <!-- Search Price-->
-                    <div class="row">
-                        <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
-                            <b>$<i>@product.Price</i></b>
-                        </div>
-                        <div class="col-6">
-                            <a asp-page="CheckoutEdit" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                                <i class="bi bi-pencil-square mx-2"></i>Edit Item Price and Quantity
-                            </a>
-
+                            Quantity: @product.Quantity
                         </div>
                     </div>
                 </div>
+
+                <!--Price-->
+                <div class="row">
+                    <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
+                        <b>$<i>@product.Price</i></b>
+                    </div>
+
+                    <div class="col-6">
+                        <a asp-page="CheckoutEdit" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-success" style="align-items:center;">
+                            <i class="bi bi-pencil-square mx-2"></i>Edit Item Price and Quantity
+                        </a>
+                        <a asp-page="DeleteProductCheckout" asp-route-id="@product.ProductID" rows="3" class="d-block btn btn-primary btn-danger" style="align-items:center;"
+                           onclick="return confirm('Are you sure you want to Delete this product?')">
+                            <i class="bi bi-x-circle mx-2"></i>Delete
+                        </a>
+                    </div>
+                </div>
+
             }
         </div>
     </div>
