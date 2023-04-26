@@ -155,7 +155,7 @@ namespace GroceryListUI.Pages
                         UserList uList = new UserList();
 
 
-
+                        
                         //uList.ListID = int.Parse(reader["1"].ToString());
                         uList.ProductID = int.Parse(reader["ProductID"].ToString());
                         uList.ImageURL = reader["ImageURL"].ToString();
@@ -179,14 +179,16 @@ namespace GroceryListUI.Pages
         {
             Search();
 
-            AddToList();
+            //AddToList();
 
 
         }
 
+
+
         public void Search() {
 
-            string sql = "SELECT * FROM Product WHERE ProductName LIKE @productName Order by ProductName";
+            string sql = "SELECT * FROM Product WHERE ProductName LIKE @productName Order by ProductName " ;
 
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
@@ -204,6 +206,7 @@ namespace GroceryListUI.Pages
                     {
 
                         Product product = new Product();
+                        
 
                         product.ProductID = int.Parse(reader["ProductID"].ToString());
                         product.ProductName = reader["ProductName"].ToString();
@@ -215,6 +218,20 @@ namespace GroceryListUI.Pages
                         product.Quantity = int.Parse(reader["Quantity"].ToString());
                         //product.SearchBox = reader["SearchBox"].ToString();
                         ProductListMain.Add(product);
+
+
+
+                        //UserList uList = new UserList();
+
+
+
+                        //uList.ListID = int.Parse(reader["1"].ToString());
+                        //uList.ProductID = int.Parse(reader["ProductID"].ToString());
+                        //uList.ImageURL = reader["ImageURL"].ToString();
+                        //uList.Price = decimal.Parse(reader["Price"].ToString());
+                        //uList.ProductName = reader["ProductName"].ToString();
+                        //uList.Quantity = int.Parse(reader["Quantity"].ToString());
+                        //UseList.Add(uList);
 
 
                     }
