@@ -1,6 +1,12 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.IndexModel
 @{
+
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenticatedLayout" : "_Layout";
+    }
+
     decimal total = 0;
 }
 <div id="SearchList" class="col-sm-12 align-content-center">

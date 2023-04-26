@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using System.Reflection.Metadata.Ecma335;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 
 //crfeate class 
@@ -17,7 +18,7 @@ using System.ComponentModel.DataAnnotations;
 namespace GroceryListUI.Pages
 {
 
-
+    
 
     public class IndexModel : PageModel
     {
