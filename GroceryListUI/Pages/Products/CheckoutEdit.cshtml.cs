@@ -31,26 +31,22 @@ namespace GroceryListUI.Pages.Products
                     ExistingProduct.ProductName = reader["ProductName"].ToString();
                     ExistingProduct.ImageURL = reader["ImageURL"].ToString();
                     ExistingProduct.Price = decimal.Parse(reader["Price"].ToString());
-                    ExistingProduct.Quantity = int.Parse(reader["Quantity"].ToString());
+                    ExistingProduct.Price = int.Parse(reader["Price"].ToString());
                     ExistingProduct.NutrtionLabel = reader["NutrtionLabel"].ToString();
                     ExistingProduct.ProductName = reader["ProductName"].ToString();
                     ExistingProduct.Description = reader["Description"].ToString();
                     ExistingProduct.Ingredient = reader["Ingredient"].ToString();
                 }
-
             }
-
         }
 
         public IActionResult OnPost(int id)
         {
             if (ModelState.IsValid)
             {
-
                 // step 1
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
-
                     // step 2
                     string sql = "UPDATE Product SET ProductName=@productName,ImageURL=@imageURL,NutrtionLabel=@nutrtionlabel," +
                         "Description=@description,Price=@price,Ingredient=@ingredient,Quantity=@quantity WHERE ProductID=@productID";
@@ -79,3 +75,4 @@ namespace GroceryListUI.Pages.Products
         }
     }
 }
+
