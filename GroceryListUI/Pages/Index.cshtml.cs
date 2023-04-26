@@ -157,7 +157,7 @@ namespace GroceryListUI.Pages
 
 
                         //uList.ListID = int.Parse(reader["1"].ToString());
-
+                        uList.ProductID = int.Parse(reader["ProductID"].ToString());
                         uList.ImageURL = reader["ImageURL"].ToString();
                         uList.Price = decimal.Parse(reader["Price"].ToString());
                         uList.ProductName = reader["ProductName"].ToString();

@@ -170,8 +170,9 @@
                                     <b>$<i>@uList.Price</i></b>
                                 </div>
                                 <div class="col-6">
-                                    <a asp-page="Index" asp-route-id="@uList.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                                        <i class="bi bi-dash-circle-fill mx-2"></i>Remove Item
+                                    <a asp-page="Products/RemoveProduct" asp-route-id="@uList.ProductID" class="btn btn-primary btn-danger"
+                                   onclick="return confirm('Are you sure you want to Remove this product?')">
+                                        <i class="bi bi-x-circle mx-2"></i>Addd Item
                                     </a>
 
                                 </div>
