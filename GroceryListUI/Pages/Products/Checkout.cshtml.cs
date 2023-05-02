@@ -55,6 +55,7 @@ namespace GroceryListUI.Pages.Products
                             uList.Price = decimal.Parse(reader["Price"].ToString());
                             uList.ProductName = reader["ProductName"].ToString();
                             uList.Quantity = int.Parse(reader["ProductQuantity"].ToString());
+                            uList.Discount = decimal.Parse(reader["Discount"].ToString());
                             Bob.Add(uList);
 
                         }

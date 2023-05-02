@@ -8,6 +8,7 @@
     }
 
     decimal total = 0;
+    decimal discountTotal = 0;
 }
 <div id="SearchList" class="col-sm-12 align-content-center">
     <label for="ListTitle" class=""></label>
@@ -68,7 +69,9 @@
         @foreach (var uList in Model.Bob)
         {
             total = total + (@uList.Price * @uList.Quantity);
+            discountTotal = total - (total * @uList.Discount / 100);
         }
         <h1><b>Your total is: <i>$@total</i></b></h1>
+        <h1><b>Discount: <i>$@discountTotal</i></b></h1>
     </div>
 </div>

@@ -64,6 +64,7 @@ namespace GroceryListUI.Pages
 
             public int Quantity { get; set; }
 
+            public decimal Discount { get; set; }
         }
 
         [BindProperty]
