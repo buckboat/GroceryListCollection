@@ -13,7 +13,7 @@ namespace GroceryListUI.Pages.Products
         {
             using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
             {
-                string sql = "DELETE FROM Product WHERE ProductID = @productid";
+                string sql = "DELETE FROM ListProduct WHERE ProductID = @productid";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@productid", id);
                 conn.Open();
