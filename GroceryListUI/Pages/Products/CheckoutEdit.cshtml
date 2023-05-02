@@ -1,20 +1,7 @@
 ﻿@page
-@model GroceryListUI.Pages.Products.CheckoutEditModel
+@model GroceryListUI.Pages.LIstProduct.CheckoutEditModel
 @{
 }
-
-<script type="text/javascript">
-    function validateInput() {
-        var isValid = true;
-        var = productName = document.getElementById("inputProductName");
-
-        if (productName.value === "") {
-            document.getElementById("productNameError").innerHTML = "Product name is requred.";
-            isValid = false;
-        }
-        return isValid;
-    }
-</script>
 
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -25,67 +12,21 @@
             <img src="https://m.media-amazon.com/images/I/51ci9LqaybL._AC_SL1000_.jpg" style="width:100%;max-width:100px" />
         </div>
 
-        <div class="AddProductBg col-sm-5">
-            <label for="inputProductName" class=" col-sm-3 col-form-label"> Product Name:</label>
-            <input type="text" class="form-control" id="inputProductName" asp-for="ExistingProduct.ProductName" />
-        </div>
-
-        <!--Price-->
-        <div class="AddProductBg col-sm-5">
-            <label for="inputPrice" class=" col-sm-3 col-form-label">Price:</label>
-            <input type="text" class="form-control" id="inputPrice" asp-for="ExistingProduct.Price" />
-        </div>
-    </div>
-
-    <div class="row mb-4">
-
-        <!--Image-->
-        <div class="AddProductBg col-sm-5">
-            <label for="inputProductImage" class="col-sm-3 col-form-label">Product Image:</label>
-            <input type="text" class="form-control" id="inputProductImage" asp-for="ExistingProduct.ImageURL" />
-        </div>
-
-        <div class="col-sm-2 ">
-        </div>
-
-        <!--Label-->
-        <div class="AddProductBg col-sm-5">
-            <label for="inputNutrtionLabel" class="col-sm-3 col-form-label">Nutrition Label:</label>
-            <input type="text" class="form-control" id="inputNutrtionLabel" asp-for="ExistingProduct.NutrtionLabel" />
-            <span asp-validation-for=" ExistingProduct.NutrtionLabel "></span>
-        </div>
-    </div>
-
-    <!--Ingredients-->
-    <div class="AddProductBg row mb-3">
-        <label for="inputIngredients" class="col-sm-1 col-form-label ">Ingredients:</label>
-        <div class="col-sm-11 ">
-            <textarea rows="3" class="form-control" id="inputIngredient" asp-for="ExistingProduct.Ingredient"></textarea>
-        </div>
-    </div>
-
-    <!--Description -->
-    <div class="row mb-3">
-        <div class="AddProductBg col-sm-9">
-            <label for="inputDescription" class="col-sm-2 col-form-label">Description:</label>
-            <textarea rows="3" class="form-control" id="inputDescription" asp-for=" ExistingProduct.Description "></textarea>
-            <div class="col-sm-10 ">
+        <div class="row mb-3">
+            <label for="inputProductQuantity" class="AddProductBg col-sm-2 col-form-label">Quantity:</label>
+            <div class="AddProductBg col-sm-2 ">
+                <input type="text" class="form-control" id="inputProductQuantity" asp-for="ExistingList.ProductQuantity" />
             </div>
-        </div>
-    </div>
+            </div>
 
-    <div class="row mb-3">
-        <label for="inputQuantity" class="AddProductBg col-sm-2 col-form-label">Quantity:</label>
-        <div class="AddProductBg col-sm-2 ">
-            <input type="text" class="form-control" id="inputQuantity" asp-for="ExistingProduct.Quantity" />
-        </div>
+            <div class="row mb-3">
+                <label for="inputDiscount" class="AddProductBg col-sm-2 col-form-label">Discount:</label>
+                <div class="AddProductBg col-sm-2 ">
+                    <input type="text" class="form-control" id="inputDiscount" asp-for="ExistingList.Discount" />
+                </div>
 
-        <div>
-            <p>&nbsp;</p>
-        </div>
-
-        <div class="AddProductBg col-sm-2 row align-items-center ">
-            <button type="submit" id="EditProductBtn" onclick="return validateInput()" class="btn btn-success">Update Quantity</button>
-        </div>
-    </div>
+                <div class="AddProductBg col-sm-2 row align-items-center ">
+                    <button type="submit" id="EditProductBtn" onclick="return validateInput()" class="btn btn-success">Update Quantity</button>
+                </div>
+            </div>
 </form>

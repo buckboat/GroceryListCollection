@@ -4,13 +4,13 @@ using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace GroceryListUI.Pages.Products
+namespace GroceryListUI.Pages.LIstProduct
 {
     [Authorize]
     public class CheckoutEditModel : PageModel
     {
         [BindProperty]
-        public Product ExistingProduct { get; set; } = new Product();
+        public ListProduct ExistingList { get; set; } = new ListProduct();
 
         public void OnGet(int Id)
         {
@@ -19,10 +19,10 @@ namespace GroceryListUI.Pages.Products
             {
 
                 // step 2
-                string sql = "SELECT * FROM Product WHERE ProductID = @productID";
+                string sql = "SELECT * FROM LIstProduct WHERE LIstProduct = @productID";
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@productID", Id);
+                cmd.Parameters.AddWithValue("@LIstProduct", Id);
 
                 //step 4
                 conn.Open();
@@ -30,14 +30,8 @@ namespace GroceryListUI.Pages.Products
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    ExistingProduct.ProductName = reader["ProductName"].ToString();
-                    ExistingProduct.ImageURL = reader["ImageURL"].ToString();
-                    ExistingProduct.Price = decimal.Parse(reader["Price"].ToString());
-                    ExistingProduct.Price = int.Parse(reader["Price"].ToString());
-                    ExistingProduct.NutrtionLabel = reader["NutrtionLabel"].ToString();
-                    ExistingProduct.ProductName = reader["ProductName"].ToString();
-                    ExistingProduct.Description = reader["Description"].ToString();
-                    ExistingProduct.Ingredient = reader["Ingredient"].ToString();
+                    ExistingList.ProductQuantity = int.Parse(reader["ListQuantity"].ToString());
+                    ExistingList.Discount = (int)decimal.Parse(reader["Discount"].ToString());
                 }
             }
         }
@@ -50,18 +44,12 @@ namespace GroceryListUI.Pages.Products
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
                     // step 2
-                    string sql = "UPDATE Product SET ProductName=@productName,ImageURL=@imageURL,NutrtionLabel=@nutrtionlabel," +
-                        "Description=@description,Price=@price,Ingredient=@ingredient,Quantity=@quantity WHERE ProductID=@productID";
+                    string sql = "UPDATE LIstProduct SET ListQuantity=@listquantity, Discount=@discount WHERE ProductID=@productID";
 
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@productName", ExistingProduct.ProductName);
-                    cmd.Parameters.AddWithValue("@imageURl", ExistingProduct.ImageURL);
-                    cmd.Parameters.AddWithValue("@nutrtionLabel", ExistingProduct.NutrtionLabel);
-                    cmd.Parameters.AddWithValue("@description", ExistingProduct.Description);
-                    cmd.Parameters.AddWithValue("@price", ExistingProduct.Price);
-                    cmd.Parameters.AddWithValue("@ingredient", ExistingProduct.Ingredient);
-                    cmd.Parameters.AddWithValue("@quantity", ExistingProduct.Quantity);
+                    cmd.Parameters.AddWithValue("@listquantity", ExistingList.ProductQuantity);
+                    cmd.Parameters.AddWithValue("@discount", ExistingList.Discount);
                     cmd.Parameters.AddWithValue("@productID", id);
                     //step 4
                     conn.Open();
@@ -77,4 +65,5 @@ namespace GroceryListUI.Pages.Products
         }
     }
 }
+
 
