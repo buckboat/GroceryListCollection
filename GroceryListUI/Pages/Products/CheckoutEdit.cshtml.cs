@@ -31,7 +31,7 @@ namespace GroceryListUI.Pages.LIstProduct
                 {
                     reader.Read();
                     ExistingList.ProductQuantity = int.Parse(reader["ListQuantity"].ToString());
-                    ExistingList.Discount = (int)decimal.Parse(reader["Discount"].ToString());
+                    ExistingList.Discount = decimal.Parse(reader["Discount"].ToString());
                 }
             }
         }
