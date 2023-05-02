@@ -29,6 +29,8 @@ namespace GroceryListUI.Pages.LIstProduct
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+
+
                     reader.Read();
                     ExistingList.ProductQuantity = int.Parse(reader["ListQuantity"].ToString());
                     ExistingList.Discount = decimal.Parse(reader["Discount"].ToString());
