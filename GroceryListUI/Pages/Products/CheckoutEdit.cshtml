@@ -1,0 +1,32 @@
+﻿@page
+@model GroceryListUI.Pages.LIstProduct.CheckoutEditModel
+@{
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!--Logo-->
+    <div class="row mt-3 mb-3">
+        <div class="col-sm-2">
+            <img src="https://m.media-amazon.com/images/I/51ci9LqaybL._AC_SL1000_.jpg" style="width:100%;max-width:100px" />
+        </div>
+
+
+    <div class="row mb-3">
+        <label for="inputProductQuantity" class="AddProductBg col-sm-2 col-form-label">Quantity:</label>
+        <div class="AddProductBg col-sm-2 ">
+            <input type="text" class="form-control" id="inputProductQuantity" asp-for="ExistingList.ProductQuantity" />
+        </div>
+
+            <div class="row mb-3">
+                <label for="inputDiscount" class="AddProductBg col-sm-2 col-form-label">Discount:</label>
+                <div class="AddProductBg col-sm-2 ">
+                    <input type="text" class="form-control" id="inputDiscount" asp-for="ExistingList.Discount" />
+                </div>
+
+        <div class="AddProductBg col-sm-2 row align-items-center ">
+            <button type="submit" id="EditProductBtn" onclick="return validateInput()" class="btn btn-success">Update Quantity</button>
+        </div>
+    </div>
+</form>
