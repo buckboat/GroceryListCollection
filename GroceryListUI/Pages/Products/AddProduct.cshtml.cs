@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using GroceryListUI.Pages.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryListUI.Pages.Products
 {
+    [Authorize]
     public class AddProduct : PageModel
     {
         [BindProperty]
@@ -70,7 +72,7 @@ namespace GroceryListUI.Pages.Products
                     cmd.Parameters.AddWithValue("@description", NewProduct.Description);
                     cmd.Parameters.AddWithValue("@price", NewProduct.Price);
                     cmd.Parameters.AddWithValue("@ingredient", NewProduct.Ingredient);
-                    cmd.Parameters.AddWithValue("@quantity", NewProduct.Quantity);
+                    cmd.Parameters.AddWithValue("@quantity", 1);
                     
                     //step 4
                     conn.Open();

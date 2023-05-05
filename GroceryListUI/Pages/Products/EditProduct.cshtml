@@ -1,6 +1,10 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.EditProductModel
 @{
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenticatedLayout" : "_Layout";
+    }
 }
 
 <script type="text/javascript">
@@ -98,7 +102,8 @@
              <div  class="col-sm-10 ">
                  <input type="text" class="form-control" id="inputQuantity" asp-for="ExistingProduct.Quantity"/>
              </div>
-        </div>-->
+             -->
+        
 
 
         <div class="AddProductBg col-sm-2 row align-items-center ">

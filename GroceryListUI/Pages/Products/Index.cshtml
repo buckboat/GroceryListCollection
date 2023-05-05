@@ -1,6 +1,10 @@
 ﻿@page
 @model GroceryListUI.Pages.Products.IndexModel;
 @{
+        if(HttpContext.User.Identity != null)
+    {
+       Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenticatedLayout" : "_Layout";
+    }
 }
 
 <div class=" container">
@@ -47,6 +51,14 @@
                         Ingredients: @product.Ingredient
                     </div>
                 </div>
+
+                <!--
+                <div class="row">
+                    <div class="AddProductBg mt-4 mb-4 col-sm-6">
+                        Quantity: @product.Quantity
+                    </div>
+                </div> -->
+
             </div>
 
             <div class="row">

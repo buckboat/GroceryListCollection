@@ -1,6 +1,12 @@
 ﻿@page
-@model GroceryListUI.Pages.Products.IndexModel
+@model GroceryListUI.Pages.Products.CheckoutModel
 @{
+
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenticatedLayout" : "_Layout";
+    }
+
     decimal total = 0;
 }
 <div id="SearchList" class="col-sm-12 align-content-center">
@@ -8,42 +14,44 @@
     <div style="background-color:dodgerblue; text-align:center; font-size:45px; font-weight:bold; ">
         Shopping List
         <div style="height:overflow-y:auto; overflow-x:hidden">
-            @foreach (var product in Model.ProductsList)
+            @foreach (var uList in Model.Bob )
             {
-                <!-- Search Name-->
+                <!--Name-->
                 <div class="row mb-5 align-content-center" style="background-color:darkcyan">
                     <hr size="10">
 
                     <div class="row">
                         <div id="ListName" class="ProductBg" style=" border:medium ; width:100%; text-align:center; font-size:2vw; margin-left:8px ">
-                            <b>@product.ProductName </b>
+                            <b>@uList.ProductName </b>
                         </div>
                     </div>
 
-                    <!-- Search Image-->
+                    <!--Image-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <img src="@product.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
-                            <img src="@product.NutrtionLabel" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                            <img src="@uList.ImageURL" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
+                            <img src="@uList.NutrtionLabel" style="width:100%;max-width:175px;margin:8px; text-align:center; " />
                         </div>
                         <div rows="2" class="col-sm-6" style=" text-align:center; border:medium;font-size:3vw; height:auto;width:stretch; ">
-                            <b>Qty:</b><input type="text" class="form-control" id="inputQuantity" value="@product.Quantity" />
-
-
+                            Quantity: @uList.Quantity
                         </div>
                     </div>
+                </div>
 
-                    <!-- Search Price-->
-                    <div class="row">
-                        <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
-                            <b>$<i>@product.Price</i></b>
-                        </div>
-                        <div class="col-6">
-                            <a asp-page="EditProduct" asp-route-id="@product.ProductID" rows="3" class=" d-block btn btn-primary " style="align-items:center; ">
-                                <i class="bi bi-pencil-square mx-2"></i>Remove Item
-                            </a>
+                <!--Price-->
+                <div class="row">
+                    <div class="col-6" style=" text-align:center;  border:medium;font-size:4vw">
+                        <b>$<i>@uList.Price</i></b>
+                    </div>
 
-                        </div>
+                    <div class="col-6">
+                        <a asp-page="CheckoutEdit" asp-route-id="@uList.ProductID" rows="3" class=" d-block btn btn-success" style="align-items:center;">
+                            <i class="bi bi-pencil-square mx-2"></i>Edit Item Price and Quantity
+                        </a>
+                        <a asp-page="DeleteProductCheckout" asp-route-id="@uList.ProductID" rows="3" class="d-block btn btn-primary btn-danger" style="align-items:center;"
+                           onclick="return confirm('Are you sure you want to delete this product?')">
+                            <i class="bi bi-x-circle mx-2"></i>Delete
+                        </a>
                     </div>
                 </div>
             }
@@ -57,9 +65,9 @@
 
 <div class="col-sm-12 offset-md-10">
     <div class="row">
-        @foreach (var product in Model.ProductsList)
+        @foreach (var uList in Model.Bob)
         {
-            total = total + (@product.Price * @product.Quantity);
+            total = total + (@uList.Quantity * (@uList.Price - (@uList.Price * @uList.Discount / 100)));
         }
         <h1><b>Your total is: <i>$@total</i></b></h1>
     </div>
