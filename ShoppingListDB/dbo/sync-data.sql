@@ -10,7 +10,7 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-/*
+
 SET IDENTITY_INSERT [dbo].[Product] ON 
 GO
 INSERT [dbo].[Product] ([ProductID], [ProductName], [ImageURL], [NutrtionLabel], [Description], [Price], [Ingredient], [Quantity]) VALUES (1, N'Banana', N'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.walmart.com%2Fip%2FFresh-Bananas-per-pound%2F44390948&psig=AOvVaw3U-89YZRbTO_xIpd_oh3Uy&ust=1679878318939000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCIi7rcWw-P0CFQAAAAAdAAAAABAE', N'https://cdn.shopify.com/s/files/1/0336/7167/5948/products/image-of-organic-bananas-organics-27999845154860_327x569.jpg?v=1626729677', N'Banana', CAST(1 AS Decimal(18, 0)), N'Banana', 1)
@@ -26,4 +26,3 @@ GO
 SET IDENTITY_INSERT [dbo].[Product] OFF
 GO
 
-*/
