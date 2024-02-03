@@ -180,7 +180,7 @@ namespace GroceryListUI.Pages
         {
             Search();
 
-            //AddToList();
+            AddToList();
 
 
         }
