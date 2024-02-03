@@ -67,7 +67,7 @@
     <div class="row">
         @foreach (var uList in Model.Bob)
         {
-            total = total + (@uList.Price * @uList.Quantity);
+            total = total + (@uList.Quantity * (@uList.Price - (@uList.Price * @uList.Discount / 100)));
         }
         <h1><b>Your total is: <i>$@total</i></b></h1>
     </div>

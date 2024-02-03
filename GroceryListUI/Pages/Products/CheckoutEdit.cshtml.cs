@@ -19,10 +19,10 @@ namespace GroceryListUI.Pages.LIstProduct
             {
 
                 // step 2
-                string sql = "SELECT * FROM LIstProduct WHERE LIstProduct = @productID";
+                string sql = "SELECT * FROM ListProduct WHERE ProductID = @productID";
                 //step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@LIstProduct", Id);
+                cmd.Parameters.AddWithValue("@productID", Id);
 
                 //step 4
                 conn.Open();
@@ -32,7 +32,7 @@ namespace GroceryListUI.Pages.LIstProduct
 
 
                     reader.Read();
-                    ExistingList.ProductQuantity = int.Parse(reader["ListQuantity"].ToString());
+                    ExistingList.ProductQuantity = int.Parse(reader["ProductQuantity"].ToString());
                     ExistingList.Discount = decimal.Parse(reader["Discount"].ToString());
                 }
             }
@@ -46,7 +46,7 @@ namespace GroceryListUI.Pages.LIstProduct
                 using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
                 {
                     // step 2
-                    string sql = "UPDATE LIstProduct SET ListQuantity=@listquantity, Discount=@discount WHERE ProductID=@productID";
+                    string sql = "UPDATE LIstProduct SET ProductQuantity=@listquantity, Discount=@discount WHERE ProductID=@productID";
 
                     //step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
